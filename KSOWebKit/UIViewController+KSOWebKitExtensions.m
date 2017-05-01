@@ -1,5 +1,5 @@
 //
-//  KSOWebKit.h
+//  UIViewController+KSOWebKitExtensions.m
 //  KSOWebKit
 //
 //  Created by William Towe on 5/1/17.
@@ -13,15 +13,24 @@
 //
 //  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import <UIKit/UIKit.h>
+#import "UIViewController+KSOWebKitExtensions.h"
+#import "KSOWebKitViewController.h"
 
-//! Project version number for KSOWebKit.
-FOUNDATION_EXPORT double KSOWebKitVersionNumber;
+@implementation UIViewController (KSOWebKitExtensions)
 
-//! Project version string for KSOWebKit.
-FOUNDATION_EXPORT const unsigned char KSOWebKitVersionString[];
+- (void)KSO_presentWebKitViewControllerForURL:(NSURL *)URL animated:(BOOL)animated completion:(dispatch_block_t)completion {
+    KSOWebKitViewController *viewController = [[KSOWebKitViewController alloc] init];
+    
+    [viewController setURL:URL];
+    
+    [self presentViewController:[[UINavigationController alloc] initWithRootViewController:viewController] animated:animated completion:completion];
+}
+- (void)KSO_pushWebKitViewControllerForURL:(NSURL *)URL animated:(BOOL)animated; {
+    KSOWebKitViewController *viewController = [[KSOWebKitViewController alloc] init];
+    
+    [viewController setURL:URL];
+    
+    [self.navigationController pushViewController:viewController animated:animated];
+}
 
-// In this header, you should import all the public headers of your framework using statements like #import <KSOWebKit/PublicHeader.h>
-
-#import <KSOWebKit/UIViewController+KSOWebKitExtensions.h>
-#import <KSOWebKit/KSOWebKitViewController.h>
+@end

@@ -1,5 +1,5 @@
 //
-//  KSOWebKit.h
+//  UIViewController+KSOWebKitExtensions.h
 //  KSOWebKit
 //
 //  Created by William Towe on 5/1/17.
@@ -15,13 +15,9 @@
 
 #import <UIKit/UIKit.h>
 
-//! Project version number for KSOWebKit.
-FOUNDATION_EXPORT double KSOWebKitVersionNumber;
+@interface UIViewController (KSOWebKitExtensions)
 
-//! Project version string for KSOWebKit.
-FOUNDATION_EXPORT const unsigned char KSOWebKitVersionString[];
+- (void)KSO_presentWebKitViewControllerForURL:(NSURL *)URL animated:(BOOL)animated completion:(dispatch_block_t)completion;
+- (void)KSO_pushWebKitViewControllerForURL:(NSURL *)URL animated:(BOOL)animated;
 
-// In this header, you should import all the public headers of your framework using statements like #import <KSOWebKit/PublicHeader.h>
-
-#import <KSOWebKit/UIViewController+KSOWebKitExtensions.h>
-#import <KSOWebKit/KSOWebKitViewController.h>
+@end

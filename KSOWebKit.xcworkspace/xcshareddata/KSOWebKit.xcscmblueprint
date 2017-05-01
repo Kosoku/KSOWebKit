@@ -1,0 +1,29 @@
+{
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "6C4624F052CCBB7D5EC749C459613039B6B8C960" : 9223372036854775807,
+    "C94B06A26B26F3DFAC67E018206B5755A8E083DD" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "F6D17925-91E9-46D2-B2DF-A016C786A64E",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "6C4624F052CCBB7D5EC749C459613039B6B8C960" : "KSOWebKit\/Vendor\/Agamotto\/",
+    "C94B06A26B26F3DFAC67E018206B5755A8E083DD" : "KSOWebKit\/Vendor\/Stanley\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "KSOWebKit",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "KSOWebKit.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Kosoku\/Agamotto.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "6C4624F052CCBB7D5EC749C459613039B6B8C960"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Kosoku\/Stanley.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C94B06A26B26F3DFAC67E018206B5755A8E083DD"
+    }
+  ]
+}

@@ -8,12 +8,75 @@
 
 /* Begin PBXBuildFile section */
 		0790595F1EB7F8A800E14243 /* KSOWebKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 0790595D1EB7F8A800E14243 /* KSOWebKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0790596A1EB7FA2100E14243 /* KSOWebKitViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 079059681EB7FA2100E14243 /* KSOWebKitViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0790596B1EB7FA2100E14243 /* KSOWebKitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 079059691EB7FA2100E14243 /* KSOWebKitViewController.m */; };
+		079059741EB7FB3900E14243 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 079059731EB7FB3900E14243 /* main.m */; };
+		079059771EB7FB3900E14243 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 079059761EB7FB3900E14243 /* AppDelegate.m */; };
+		0790597A1EB7FB3900E14243 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 079059791EB7FB3900E14243 /* ViewController.m */; };
+		0790597D1EB7FB3900E14243 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0790597B1EB7FB3900E14243 /* Main.storyboard */; };
+		0790597F1EB7FB3900E14243 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0790597E1EB7FB3900E14243 /* Assets.xcassets */; };
+		079059821EB7FB3900E14243 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 079059801EB7FB3900E14243 /* LaunchScreen.storyboard */; };
+		079059891EB7FB8000E14243 /* UIViewController+KSOWebKitExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 079059871EB7FB8000E14243 /* UIViewController+KSOWebKitExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0790598A1EB7FB8000E14243 /* UIViewController+KSOWebKitExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 079059881EB7FB8000E14243 /* UIViewController+KSOWebKitExtensions.m */; };
+		0790598D1EB7FCE900E14243 /* Agamotto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0790598C1EB7FCE900E14243 /* Agamotto.framework */; };
+		0790598F1EB7FCEE00E14243 /* Stanley.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0790598E1EB7FCEE00E14243 /* Stanley.framework */; };
+		079059911EB7FCF600E14243 /* Stanley.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 079059901EB7FCF600E14243 /* Stanley.framework */; };
+		079059921EB7FCF600E14243 /* Stanley.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 079059901EB7FCF600E14243 /* Stanley.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		079059951EB7FCFF00E14243 /* Agamotto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 079059941EB7FCFF00E14243 /* Agamotto.framework */; };
+		079059961EB7FCFF00E14243 /* Agamotto.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 079059941EB7FCFF00E14243 /* Agamotto.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		079059971EB7FD0400E14243 /* KSOWebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0790595A1EB7F8A800E14243 /* KSOWebKit.framework */; };
+		079059981EB7FD0400E14243 /* KSOWebKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0790595A1EB7F8A800E14243 /* KSOWebKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		079059991EB7FD0400E14243 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 079059511EB7F8A800E14243 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 079059591EB7F8A800E14243;
+			remoteInfo = "KSOWebKit-iOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		079059931EB7FCF700E14243 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				079059961EB7FCFF00E14243 /* Agamotto.framework in Embed Frameworks */,
+				079059921EB7FCF600E14243 /* Stanley.framework in Embed Frameworks */,
+				079059981EB7FD0400E14243 /* KSOWebKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0790595A1EB7F8A800E14243 /* KSOWebKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KSOWebKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0790595D1EB7F8A800E14243 /* KSOWebKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KSOWebKit.h; sourceTree = "<group>"; };
-		0790595E1EB7F8A800E14243 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0790595E1EB7F8A800E14243 /* KSOWebKit-iOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "KSOWebKit-iOS-Info.plist"; sourceTree = "<group>"; };
+		079059651EB7F8C300E14243 /* KSOWebKit-Info.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KSOWebKit-Info.h"; sourceTree = "<group>"; };
+		079059681EB7FA2100E14243 /* KSOWebKitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSOWebKitViewController.h; sourceTree = "<group>"; };
+		079059691EB7FA2100E14243 /* KSOWebKitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSOWebKitViewController.m; sourceTree = "<group>"; };
+		079059701EB7FB3900E14243 /* Demo-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Demo-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		079059731EB7FB3900E14243 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		079059751EB7FB3900E14243 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		079059761EB7FB3900E14243 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		079059781EB7FB3900E14243 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		079059791EB7FB3900E14243 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		0790597C1EB7FB3900E14243 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0790597E1EB7FB3900E14243 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		079059811EB7FB3900E14243 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		079059831EB7FB3900E14243 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		079059871EB7FB8000E14243 /* UIViewController+KSOWebKitExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+KSOWebKitExtensions.h"; sourceTree = "<group>"; };
+		079059881EB7FB8000E14243 /* UIViewController+KSOWebKitExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+KSOWebKitExtensions.m"; sourceTree = "<group>"; };
+		0790598C1EB7FCE900E14243 /* Agamotto.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Agamotto.framework; path = "Vendor/Agamotto/build/Debug-iphoneos/Agamotto.framework"; sourceTree = "<group>"; };
+		0790598E1EB7FCEE00E14243 /* Stanley.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stanley.framework; path = "Vendor/Stanley/build/Debug-iphoneos/Stanley.framework"; sourceTree = "<group>"; };
+		079059901EB7FCF600E14243 /* Stanley.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Stanley.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		079059941EB7FCFF00E14243 /* Agamotto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Agamotto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -21,6 +84,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0790598F1EB7FCEE00E14243 /* Stanley.framework in Frameworks */,
+				0790598D1EB7FCE900E14243 /* Agamotto.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0790596D1EB7FB3900E14243 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				079059951EB7FCFF00E14243 /* Agamotto.framework in Frameworks */,
+				079059911EB7FCF600E14243 /* Stanley.framework in Frameworks */,
+				079059971EB7FD0400E14243 /* KSOWebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -31,7 +106,9 @@
 			isa = PBXGroup;
 			children = (
 				0790595C1EB7F8A800E14243 /* KSOWebKit */,
+				079059711EB7FB3900E14243 /* Demo-iOS */,
 				0790595B1EB7F8A800E14243 /* Products */,
+				0790598B1EB7FCE900E14243 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -39,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				0790595A1EB7F8A800E14243 /* KSOWebKit.framework */,
+				079059701EB7FB3900E14243 /* Demo-iOS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -47,9 +125,65 @@
 			isa = PBXGroup;
 			children = (
 				0790595D1EB7F8A800E14243 /* KSOWebKit.h */,
-				0790595E1EB7F8A800E14243 /* Info.plist */,
+				079059671EB7F97C00E14243 /* Source */,
+				079059661EB7F97200E14243 /* Supporting Files */,
 			);
 			path = KSOWebKit;
+			sourceTree = "<group>";
+		};
+		079059661EB7F97200E14243 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0790595E1EB7F8A800E14243 /* KSOWebKit-iOS-Info.plist */,
+				079059651EB7F8C300E14243 /* KSOWebKit-Info.h */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		079059671EB7F97C00E14243 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				079059681EB7FA2100E14243 /* KSOWebKitViewController.h */,
+				079059691EB7FA2100E14243 /* KSOWebKitViewController.m */,
+				079059871EB7FB8000E14243 /* UIViewController+KSOWebKitExtensions.h */,
+				079059881EB7FB8000E14243 /* UIViewController+KSOWebKitExtensions.m */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		079059711EB7FB3900E14243 /* Demo-iOS */ = {
+			isa = PBXGroup;
+			children = (
+				079059751EB7FB3900E14243 /* AppDelegate.h */,
+				079059761EB7FB3900E14243 /* AppDelegate.m */,
+				079059781EB7FB3900E14243 /* ViewController.h */,
+				079059791EB7FB3900E14243 /* ViewController.m */,
+				0790597B1EB7FB3900E14243 /* Main.storyboard */,
+				0790597E1EB7FB3900E14243 /* Assets.xcassets */,
+				079059801EB7FB3900E14243 /* LaunchScreen.storyboard */,
+				079059831EB7FB3900E14243 /* Info.plist */,
+				079059721EB7FB3900E14243 /* Supporting Files */,
+			);
+			path = "Demo-iOS";
+			sourceTree = "<group>";
+		};
+		079059721EB7FB3900E14243 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				079059731EB7FB3900E14243 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0790598B1EB7FCE900E14243 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				079059941EB7FCFF00E14243 /* Agamotto.framework */,
+				079059901EB7FCF600E14243 /* Stanley.framework */,
+				0790598E1EB7FCEE00E14243 /* Stanley.framework */,
+				0790598C1EB7FCE900E14243 /* Agamotto.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -59,16 +193,18 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				079059891EB7FB8000E14243 /* UIViewController+KSOWebKitExtensions.h in Headers */,
 				0790595F1EB7F8A800E14243 /* KSOWebKit.h in Headers */,
+				0790596A1EB7FA2100E14243 /* KSOWebKitViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		079059591EB7F8A800E14243 /* KSOWebKit */ = {
+		079059591EB7F8A800E14243 /* KSOWebKit-iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 079059621EB7F8A800E14243 /* Build configuration list for PBXNativeTarget "KSOWebKit" */;
+			buildConfigurationList = 079059621EB7F8A800E14243 /* Build configuration list for PBXNativeTarget "KSOWebKit-iOS" */;
 			buildPhases = (
 				079059551EB7F8A800E14243 /* Sources */,
 				079059561EB7F8A800E14243 /* Frameworks */,
@@ -79,10 +215,29 @@
 			);
 			dependencies = (
 			);
-			name = KSOWebKit;
+			name = "KSOWebKit-iOS";
 			productName = KSOWebKit;
 			productReference = 0790595A1EB7F8A800E14243 /* KSOWebKit.framework */;
 			productType = "com.apple.product-type.framework";
+		};
+		0790596F1EB7FB3900E14243 /* Demo-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 079059861EB7FB3900E14243 /* Build configuration list for PBXNativeTarget "Demo-iOS" */;
+			buildPhases = (
+				0790596C1EB7FB3900E14243 /* Sources */,
+				0790596D1EB7FB3900E14243 /* Frameworks */,
+				0790596E1EB7FB3900E14243 /* Resources */,
+				079059931EB7FCF700E14243 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0790599A1EB7FD0400E14243 /* PBXTargetDependency */,
+			);
+			name = "Demo-iOS";
+			productName = "Demo-iOS";
+			productReference = 079059701EB7FB3900E14243 /* Demo-iOS.app */;
+			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
@@ -97,6 +252,10 @@
 						CreatedOnToolsVersion = 8.3.2;
 						ProvisioningStyle = Automatic;
 					};
+					0790596F1EB7FB3900E14243 = {
+						CreatedOnToolsVersion = 8.3.2;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 079059541EB7F8A800E14243 /* Build configuration list for PBXProject "KSOWebKit" */;
@@ -105,13 +264,15 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 079059501EB7F8A800E14243;
 			productRefGroup = 0790595B1EB7F8A800E14243 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				079059591EB7F8A800E14243 /* KSOWebKit */,
+				079059591EB7F8A800E14243 /* KSOWebKit-iOS */,
+				0790596F1EB7FB3900E14243 /* Demo-iOS */,
 			);
 		};
 /* End PBXProject section */
@@ -124,6 +285,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0790596E1EB7FB3900E14243 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				079059821EB7FB3900E14243 /* LaunchScreen.storyboard in Resources */,
+				0790597F1EB7FB3900E14243 /* Assets.xcassets in Resources */,
+				0790597D1EB7FB3900E14243 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -131,10 +302,49 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0790598A1EB7FB8000E14243 /* UIViewController+KSOWebKitExtensions.m in Sources */,
+				0790596B1EB7FA2100E14243 /* KSOWebKitViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0790596C1EB7FB3900E14243 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0790597A1EB7FB3900E14243 /* ViewController.m in Sources */,
+				079059771EB7FB3900E14243 /* AppDelegate.m in Sources */,
+				079059741EB7FB3900E14243 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0790599A1EB7FD0400E14243 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 079059591EB7F8A800E14243 /* KSOWebKit-iOS */;
+			targetProxy = 079059991EB7FD0400E14243 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		0790597B1EB7FB3900E14243 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0790597C1EB7FB3900E14243 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		079059801EB7FB3900E14243 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				079059811EB7FB3900E14243 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		079059601EB7F8A800E14243 /* Debug */ = {
@@ -243,11 +453,17 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = KSOWebKit/Info.plist;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Vendor/Agamotto/build/Debug-iphoneos",
+					"$(PROJECT_DIR)/Vendor/Stanley/build/Debug-iphoneos",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/KSOWebKit/KSOWebKit-iOS-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.kosoku.KSOWebKit;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kosoku.ksowebkit;
+				PRODUCT_NAME = KSOWebKit;
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -260,12 +476,40 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = KSOWebKit/Info.plist;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Vendor/Agamotto/build/Debug-iphoneos",
+					"$(PROJECT_DIR)/Vendor/Stanley/build/Debug-iphoneos",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/KSOWebKit/KSOWebKit-iOS-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.kosoku.KSOWebKit;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kosoku.ksowebkit;
+				PRODUCT_NAME = KSOWebKit;
 				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		079059841EB7FB3900E14243 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Demo-iOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kosoku.Demo-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		079059851EB7FB3900E14243 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Demo-iOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kosoku.Demo-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
@@ -281,11 +525,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		079059621EB7F8A800E14243 /* Build configuration list for PBXNativeTarget "KSOWebKit" */ = {
+		079059621EB7F8A800E14243 /* Build configuration list for PBXNativeTarget "KSOWebKit-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				079059631EB7F8A800E14243 /* Debug */,
 				079059641EB7F8A800E14243 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		079059861EB7FB3900E14243 /* Build configuration list for PBXNativeTarget "Demo-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				079059841EB7FB3900E14243 /* Debug */,
+				079059851EB7FB3900E14243 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};

@@ -1,5 +1,5 @@
 //
-//  KSOWebKit.h
+//  KSOWebKitViewController.h
 //  KSOWebKit
 //
 //  Created by William Towe on 5/1/17.
@@ -15,13 +15,12 @@
 
 #import <UIKit/UIKit.h>
 
-//! Project version number for KSOWebKit.
-FOUNDATION_EXPORT double KSOWebKitVersionNumber;
+NS_ASSUME_NONNULL_BEGIN
 
-//! Project version string for KSOWebKit.
-FOUNDATION_EXPORT const unsigned char KSOWebKitVersionString[];
+@interface KSOWebKitViewController : UIViewController
 
-// In this header, you should import all the public headers of your framework using statements like #import <KSOWebKit/PublicHeader.h>
+@property (copy,nonatomic,nullable) NSURL *URL;
 
-#import <KSOWebKit/UIViewController+KSOWebKitExtensions.h>
-#import <KSOWebKit/KSOWebKitViewController.h>
+@end
+
+NS_ASSUME_NONNULL_END

@@ -1,0 +1,6 @@
+[submodule "Vendor/Stanley"]
+	path = Vendor/Stanley
+	url = https://github.com/Kosoku/Stanley.git
+[submodule "Vendor/Agamotto"]
+	path = Vendor/Agamotto
+	url = https://github.com/Kosoku/Agamotto.git

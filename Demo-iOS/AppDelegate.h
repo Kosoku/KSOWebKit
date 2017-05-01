@@ -1,6 +1,6 @@
 //
-//  KSOWebKit.h
-//  KSOWebKit
+//  AppDelegate.h
+//  Demo-iOS
 //
 //  Created by William Towe on 5/1/17.
 //  Copyright © 2017 Kosoku Interactive, LLC. All rights reserved.
@@ -15,13 +15,10 @@
 
 #import <UIKit/UIKit.h>
 
-//! Project version number for KSOWebKit.
-FOUNDATION_EXPORT double KSOWebKitVersionNumber;
+@interface AppDelegate : UIResponder <UIApplicationDelegate>
 
-//! Project version string for KSOWebKit.
-FOUNDATION_EXPORT const unsigned char KSOWebKitVersionString[];
+@property (strong, nonatomic) UIWindow *window;
 
-// In this header, you should import all the public headers of your framework using statements like #import <KSOWebKit/PublicHeader.h>
 
-#import <KSOWebKit/UIViewController+KSOWebKitExtensions.h>
-#import <KSOWebKit/KSOWebKitViewController.h>
+@end
+

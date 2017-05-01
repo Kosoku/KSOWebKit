@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="br7-jN-Dak">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="O7M-nb-U1D">
+            <objects>
+                <navigationController id="br7-jN-Dak" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nUW-UK-Lw7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="sXF-M0-l0c" kind="relationship" relationship="rootViewController" id="wQa-zx-6W4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vwy-2R-LcT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-170" y="88"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="3hA-f0-ILP">
+            <objects>
+                <viewController id="sXF-M0-l0c" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="WLf-YB-OHV"/>
+                        <viewControllerLayoutGuide type="bottom" id="nQY-Sy-Uwq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dlc-o1-KxO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IUb-6S-juP">
+                                <rect key="frame" x="16" y="72" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M2C-8S-STf">
+                                <rect key="frame" x="161" y="110" width="53" height="30"/>
+                                <state key="normal" title="Present"/>
+                                <connections>
+                                    <action selector="_presentAction:" destination="sXF-M0-l0c" eventType="touchUpInside" id="V2v-ie-EZs"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CmF-vC-af3">
+                                <rect key="frame" x="170" y="148" width="35" height="30"/>
+                                <state key="normal" title="Push"/>
+                                <connections>
+                                    <action selector="_pushAction:" destination="sXF-M0-l0c" eventType="touchUpInside" id="H17-sy-0YR"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="CmF-vC-af3" firstAttribute="centerX" secondItem="dlc-o1-KxO" secondAttribute="centerX" id="A9V-Nn-6GF"/>
+                            <constraint firstItem="CmF-vC-af3" firstAttribute="top" secondItem="M2C-8S-STf" secondAttribute="bottom" constant="8" id="I7Y-P7-0CB"/>
+                            <constraint firstItem="IUb-6S-juP" firstAttribute="trailing" secondItem="dlc-o1-KxO" secondAttribute="trailingMargin" id="Lus-eE-JaP"/>
+                            <constraint firstItem="M2C-8S-STf" firstAttribute="top" secondItem="IUb-6S-juP" secondAttribute="bottom" constant="8" id="Q8X-yl-y1D"/>
+                            <constraint firstItem="IUb-6S-juP" firstAttribute="top" secondItem="WLf-YB-OHV" secondAttribute="bottom" constant="8" id="bFi-wE-YhS"/>
+                            <constraint firstItem="M2C-8S-STf" firstAttribute="centerX" secondItem="dlc-o1-KxO" secondAttribute="centerX" id="bVO-fI-57t"/>
+                            <constraint firstItem="IUb-6S-juP" firstAttribute="leading" secondItem="dlc-o1-KxO" secondAttribute="leadingMargin" id="v3e-ln-OpR"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="7kU-UV-c5M"/>
+                    <connections>
+                        <outlet property="textField" destination="IUb-6S-juP" id="6Xo-4C-oug"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jke-cO-7cs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="744.79999999999995" y="65.217391304347828"/>
+        </scene>
+    </scenes>
+</document>
