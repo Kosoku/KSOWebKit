@@ -29,6 +29,8 @@
 		0790599C1EB803DF00E14243 /* Ditko.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0790599B1EB803DF00E14243 /* Ditko.framework */; };
 		0790599E1EB803E800E14243 /* Ditko.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0790599D1EB803E800E14243 /* Ditko.framework */; };
 		0790599F1EB803E800E14243 /* Ditko.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0790599D1EB803E800E14243 /* Ditko.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		079059A31EB80A3700E14243 /* KSOWebKitTitleView.h in Headers */ = {isa = PBXBuildFile; fileRef = 079059A11EB80A3700E14243 /* KSOWebKitTitleView.h */; };
+		079059A41EB80A3700E14243 /* KSOWebKitTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 079059A21EB80A3700E14243 /* KSOWebKitTitleView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +85,8 @@
 		079059941EB7FCFF00E14243 /* Agamotto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Agamotto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0790599B1EB803DF00E14243 /* Ditko.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Ditko.framework; path = "Vendor/Ditko/build/Debug-iphoneos/Ditko.framework"; sourceTree = "<group>"; };
 		0790599D1EB803E800E14243 /* Ditko.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Ditko.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		079059A11EB80A3700E14243 /* KSOWebKitTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSOWebKitTitleView.h; path = Private/KSOWebKitTitleView.h; sourceTree = "<group>"; };
+		079059A21EB80A3700E14243 /* KSOWebKitTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KSOWebKitTitleView.m; path = Private/KSOWebKitTitleView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +159,7 @@
 				079059691EB7FA2100E14243 /* KSOWebKitViewController.m */,
 				079059871EB7FB8000E14243 /* UIViewController+KSOWebKitExtensions.h */,
 				079059881EB7FB8000E14243 /* UIViewController+KSOWebKitExtensions.m */,
+				079059A01EB8092600E14243 /* Private */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -196,6 +201,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		079059A01EB8092600E14243 /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				079059A11EB80A3700E14243 /* KSOWebKitTitleView.h */,
+				079059A21EB80A3700E14243 /* KSOWebKitTitleView.m */,
+			);
+			name = Private;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -205,6 +219,7 @@
 			files = (
 				079059891EB7FB8000E14243 /* UIViewController+KSOWebKitExtensions.h in Headers */,
 				0790595F1EB7F8A800E14243 /* KSOWebKit.h in Headers */,
+				079059A31EB80A3700E14243 /* KSOWebKitTitleView.h in Headers */,
 				0790596A1EB7FA2100E14243 /* KSOWebKitViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -313,6 +328,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0790598A1EB7FB8000E14243 /* UIViewController+KSOWebKitExtensions.m in Sources */,
+				079059A41EB80A3700E14243 /* KSOWebKitTitleView.m in Sources */,
 				0790596B1EB7FA2100E14243 /* KSOWebKitViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

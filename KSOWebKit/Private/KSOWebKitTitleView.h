@@ -1,6 +1,6 @@
 //
-//  ViewController.m
-//  Demo-iOS
+//  KSOWebKitTitleView.h
+//  KSOWebKit
 //
 //  Created by William Towe on 5/1/17.
 //  Copyright © 2017 Kosoku Interactive, LLC. All rights reserved.
@@ -13,29 +13,11 @@
 //
 //  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import "ViewController.h"
+#import <UIKit/UIKit.h>
+#import <WebKit/WKWebView.h>
 
-#import <KSOWebKit/KSOWebKit.h>
+@interface KSOWebKitTitleView : UIView
 
-@interface ViewController ()
-@property (weak,nonatomic) IBOutlet UITextField *textField;
-@end
-
-@implementation ViewController
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    [self setTitle:@"Demo"];
-    
-    [self.textField setText:@"https://arstechnica.com/"];
-}
-
-- (IBAction)_presentAction:(id)sender {
-    [self KSO_presentWebKitViewControllerForURL:[NSURL URLWithString:self.textField.text] animated:YES completion:nil];
-}
-- (IBAction)_pushAction:(id)sender {
-    [self KSO_pushWebKitViewControllerForURL:[NSURL URLWithString:self.textField.text] animated:YES];
-}
+- (instancetype)initWithFrame:(CGRect)frame webView:(WKWebView *)webView;
 
 @end

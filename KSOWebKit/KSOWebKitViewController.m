@@ -14,6 +14,7 @@
 //  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import "KSOWebKitViewController.h"
+#import "KSOWebKitTitleView.h"
 
 #import <Stanley/Stanley.h>
 #import <Agamotto/Agamotto.h>
@@ -54,7 +55,26 @@
         });
     }];
     
-    if (self.presentingViewController != nil) {
+    void(^shareItemBlock)(UIBarButtonItem *) = ^(UIBarButtonItem * _Nonnull barButtonItem){
+        kstStrongify(self);
+        if (self.webView.URL.isFileURL) {
+            UIDocumentInteractionController *controller = [UIDocumentInteractionController interactionControllerWithURL:self.webView.URL];
+            
+            [controller presentOptionsMenuFromBarButtonItem:barButtonItem animated:YES];
+        }
+        else {
+            UIActivityViewController *controller = [[UIActivityViewController alloc] initWithActivityItems:@[self.webView.URL] applicationActivities:nil];
+            
+            [self presentViewController:controller animated:YES completion:nil];
+        }
+    };
+    
+    if (self.presentingViewController == nil) {
+        [self.navigationItem setRightBarButtonItems:@[[UIBarButtonItem KDI_barButtonSystemItem:UIBarButtonSystemItemAction block:shareItemBlock]]];
+    }
+    else {
+        [self.navigationItem setLeftBarButtonItems:@[[UIBarButtonItem KDI_barButtonSystemItem:UIBarButtonSystemItemAction block:shareItemBlock]]];
+        
         [self.navigationItem setRightBarButtonItems:@[[UIBarButtonItem KDI_barButtonSystemItem:UIBarButtonSystemItemDone block:^(UIBarButtonItem * _Nonnull barButtonItem) {
             kstStrongify(self);
             if ([self.delegate respondsToSelector:@selector(webKitViewControllerDidFinish:)]) {
@@ -65,6 +85,12 @@
             }
         }]]];
     }
+    
+    KSOWebKitTitleView *titleView = [[KSOWebKitTitleView alloc] initWithFrame:CGRectZero webView:self.webView];
+    
+    [titleView sizeToFit];
+    
+    [self.navigationItem setTitleView:titleView];
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
