@@ -14,7 +14,7 @@
         <scene sceneID="O7M-nb-U1D">
             <objects>
                 <navigationController id="br7-jN-Dak" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="nUW-UK-Lw7" customClass="KDIProgressNavigationBar">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="nUW-UK-Lw7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -58,15 +58,24 @@
                                     <action selector="_pushAction:" destination="sXF-M0-l0c" eventType="touchUpInside" id="H17-sy-0YR"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wQp-w2-kQi">
+                                <rect key="frame" x="101" y="186" width="173" height="30"/>
+                                <state key="normal" title="Present without progress"/>
+                                <connections>
+                                    <action selector="_presentWithoutProgressAction:" destination="sXF-M0-l0c" eventType="touchUpInside" id="XXU-wL-Jla"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="wQp-w2-kQi" firstAttribute="top" secondItem="CmF-vC-af3" secondAttribute="bottom" constant="8" id="2sr-Lw-uZC"/>
                             <constraint firstItem="CmF-vC-af3" firstAttribute="centerX" secondItem="dlc-o1-KxO" secondAttribute="centerX" id="A9V-Nn-6GF"/>
                             <constraint firstItem="CmF-vC-af3" firstAttribute="top" secondItem="M2C-8S-STf" secondAttribute="bottom" constant="8" id="I7Y-P7-0CB"/>
                             <constraint firstItem="IUb-6S-juP" firstAttribute="trailing" secondItem="dlc-o1-KxO" secondAttribute="trailingMargin" id="Lus-eE-JaP"/>
                             <constraint firstItem="M2C-8S-STf" firstAttribute="top" secondItem="IUb-6S-juP" secondAttribute="bottom" constant="8" id="Q8X-yl-y1D"/>
                             <constraint firstItem="IUb-6S-juP" firstAttribute="top" secondItem="WLf-YB-OHV" secondAttribute="bottom" constant="8" id="bFi-wE-YhS"/>
                             <constraint firstItem="M2C-8S-STf" firstAttribute="centerX" secondItem="dlc-o1-KxO" secondAttribute="centerX" id="bVO-fI-57t"/>
+                            <constraint firstItem="wQp-w2-kQi" firstAttribute="centerX" secondItem="dlc-o1-KxO" secondAttribute="centerX" id="oEd-iO-7sy"/>
                             <constraint firstItem="IUb-6S-juP" firstAttribute="leading" secondItem="dlc-o1-KxO" secondAttribute="leadingMargin" id="v3e-ln-OpR"/>
                         </constraints>
                     </view>

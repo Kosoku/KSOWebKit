@@ -50,7 +50,6 @@
     
     _titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     [_titleLabel setTextAlignment:NSTextAlignmentCenter];
-    [_titleLabel setAdjustsFontForContentSizeCategory:YES];
     [_titleLabel setFont:[UINavigationBar appearance].titleTextAttributes[NSFontAttributeName] ?: [UIFont boldSystemFontOfSize:17.0]];
     [_titleLabel setText:placeholder];
     [self addSubview:_titleLabel];

@@ -15,9 +15,14 @@
 
 #import <UIKit/UIKit.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface UIViewController (KSOWebKitExtensions)
 
-- (void)KSO_presentWebKitViewControllerForURL:(NSURL *)URL animated:(BOOL)animated completion:(dispatch_block_t)completion;
-- (void)KSO_pushWebKitViewControllerForURL:(NSURL *)URL animated:(BOOL)animated;
+- (void)KSO_presentWebKitViewControllerForURL:(NSURL *)URL animated:(BOOL)animated navigationBarClass:(nullable Class)navigationBarClass completion:(nullable dispatch_block_t)completion;
+
+- (void)KSO_pushWebKitViewControllerForURL:(NSURL *)URL animated:(BOOL)animated completion:(nullable dispatch_block_t)completion;
 
 @end
+
+NS_ASSUME_NONNULL_END

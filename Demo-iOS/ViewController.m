@@ -32,10 +32,13 @@
 }
 
 - (IBAction)_presentAction:(id)sender {
-    [self KSO_presentWebKitViewControllerForURL:[NSURL URLWithString:self.textField.text] animated:YES completion:nil];
+    [self KSO_presentWebKitViewControllerForURL:[NSURL URLWithString:self.textField.text] animated:YES navigationBarClass:Nil completion:nil];
 }
 - (IBAction)_pushAction:(id)sender {
-    [self KSO_pushWebKitViewControllerForURL:[NSURL URLWithString:self.textField.text] animated:YES];
+    [self KSO_pushWebKitViewControllerForURL:[NSURL URLWithString:self.textField.text] animated:YES completion:nil];
+}
+- (IBAction)_presentWithoutProgressAction:(id)sender {
+    [self KSO_presentWebKitViewControllerForURL:[NSURL URLWithString:self.textField.text] animated:YES navigationBarClass:[UINavigationBar class] completion:nil];
 }
 
 @end

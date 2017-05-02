@@ -25,6 +25,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (copy,nonatomic,nullable) NSURL *URL;
 
+@property (assign,nonatomic) BOOL showsActionBarButtonItem;
+
 @end
 
 @protocol KSOWebKitViewControllerDelegate <NSObject>

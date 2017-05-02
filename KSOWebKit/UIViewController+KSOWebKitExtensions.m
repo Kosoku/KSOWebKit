@@ -20,23 +20,23 @@
 
 @implementation UIViewController (KSOWebKitExtensions)
 
-- (void)KSO_presentWebKitViewControllerForURL:(NSURL *)URL animated:(BOOL)animated completion:(dispatch_block_t)completion {
+- (void)KSO_presentWebKitViewControllerForURL:(NSURL *)URL animated:(BOOL)animated navigationBarClass:(Class)navigationBarClass completion:(dispatch_block_t)completion {
     KSOWebKitViewController *viewController = [[KSOWebKitViewController alloc] init];
     
     [viewController setURL:URL];
     
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithNavigationBarClass:[KDIProgressNavigationBar class] toolbarClass:Nil];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithNavigationBarClass:navigationBarClass ?: [KDIProgressNavigationBar class] toolbarClass:Nil];
     
     [navigationController setViewControllers:@[viewController]];
     
     [self presentViewController:navigationController animated:animated completion:completion];
 }
-- (void)KSO_pushWebKitViewControllerForURL:(NSURL *)URL animated:(BOOL)animated; {
+- (void)KSO_pushWebKitViewControllerForURL:(NSURL *)URL animated:(BOOL)animated completion:(dispatch_block_t)completion; {
     KSOWebKitViewController *viewController = [[KSOWebKitViewController alloc] init];
     
     [viewController setURL:URL];
     
-    [self.navigationController pushViewController:viewController animated:animated];
+    [self.navigationController KDI_pushViewController:viewController animated:animated completion:completion];
 }
 
 @end
