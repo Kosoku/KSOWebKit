@@ -7,14 +7,16 @@
     "8244F3E46D26AAF61DD4209BB1E33866BD490F5D" : 9223372036854775807,
     "95DFEE02B27284838A8FA3A07714FEA27B4CE167" : 9223372036854775807,
     "C94B06A26B26F3DFAC67E018206B5755A8E083DD" : 9223372036854775807,
-    "6C4624F052CCBB7D5EC749C459613039B6B8C960" : 9223372036854775807
+    "6C4624F052CCBB7D5EC749C459613039B6B8C960" : 9223372036854775807,
+    "F498E775B877B20503564CBDCDC72C5B66674364" : 9223372036854775807
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "F6D17925-91E9-46D2-B2DF-A016C786A64E",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
     "8244F3E46D26AAF61DD4209BB1E33866BD490F5D" : "KSOWebKit\/",
     "95DFEE02B27284838A8FA3A07714FEA27B4CE167" : "KSOWebKit\/Vendor\/Ditko\/",
     "C94B06A26B26F3DFAC67E018206B5755A8E083DD" : "KSOWebKit\/Vendor\/Stanley\/",
-    "6C4624F052CCBB7D5EC749C459613039B6B8C960" : "KSOWebKit\/Vendor\/Agamotto\/"
+    "6C4624F052CCBB7D5EC749C459613039B6B8C960" : "KSOWebKit\/Vendor\/Agamotto\/",
+    "F498E775B877B20503564CBDCDC72C5B66674364" : "KSOWebKit\/Vendor\/KSOFontAwesomeExtensions\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "KSOWebKit",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
@@ -39,6 +41,11 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Kosoku\/Stanley.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C94B06A26B26F3DFAC67E018206B5755A8E083DD"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Kosoku\/KSOFontAwesomeExtensions.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "F498E775B877B20503564CBDCDC72C5B66674364"
     }
   ]
 }

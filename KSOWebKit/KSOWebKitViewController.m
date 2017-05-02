@@ -15,6 +15,7 @@
 
 #import "KSOWebKitViewController.h"
 #import "KSOWebKitTitleView.h"
+#import "KSOWebKitTheme.h"
 
 #import <Stanley/Stanley.h>
 #import <Agamotto/Agamotto.h>
@@ -37,6 +38,7 @@
     if (!(self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]))
         return nil;
     
+    _theme = KSOWebKitTheme.defaultTheme;
     _showsActionBarButtonItem = YES;
     
     return self;
@@ -147,7 +149,7 @@
         }
     }
     
-    KSOWebKitTitleView *titleView = [[KSOWebKitTitleView alloc] initWithFrame:CGRectZero webView:self.webView];
+    KSOWebKitTitleView *titleView = [[KSOWebKitTitleView alloc] initWithFrame:CGRectZero webView:self.webView viewController:self];
     
     [titleView sizeToFit];
     

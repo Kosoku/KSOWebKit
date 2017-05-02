@@ -31,6 +31,12 @@
 		0790599F1EB803E800E14243 /* Ditko.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0790599D1EB803E800E14243 /* Ditko.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		079059A31EB80A3700E14243 /* KSOWebKitTitleView.h in Headers */ = {isa = PBXBuildFile; fileRef = 079059A11EB80A3700E14243 /* KSOWebKitTitleView.h */; };
 		079059A41EB80A3700E14243 /* KSOWebKitTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 079059A21EB80A3700E14243 /* KSOWebKitTitleView.m */; };
+		079059A71EB8F2D900E14243 /* KSOWebKitTheme.h in Headers */ = {isa = PBXBuildFile; fileRef = 079059A51EB8F2D900E14243 /* KSOWebKitTheme.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		079059A81EB8F2D900E14243 /* KSOWebKitTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 079059A61EB8F2D900E14243 /* KSOWebKitTheme.m */; };
+		079059AA1EB9022800E14243 /* KSOFontAwesomeExtensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 079059A91EB9022800E14243 /* KSOFontAwesomeExtensions.framework */; };
+		079059AC1EB9023100E14243 /* KSOFontAwesomeExtensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 079059AB1EB9023100E14243 /* KSOFontAwesomeExtensions.framework */; };
+		079059AD1EB9023100E14243 /* KSOFontAwesomeExtensions.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 079059AB1EB9023100E14243 /* KSOFontAwesomeExtensions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		079059AF1EB907C100E14243 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 079059AE1EB907C100E14243 /* FontAwesome.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +59,7 @@
 				079059961EB7FCFF00E14243 /* Agamotto.framework in Embed Frameworks */,
 				079059921EB7FCF600E14243 /* Stanley.framework in Embed Frameworks */,
 				0790599F1EB803E800E14243 /* Ditko.framework in Embed Frameworks */,
+				079059AD1EB9023100E14243 /* KSOFontAwesomeExtensions.framework in Embed Frameworks */,
 				079059981EB7FD0400E14243 /* KSOWebKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -87,6 +94,11 @@
 		0790599D1EB803E800E14243 /* Ditko.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Ditko.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		079059A11EB80A3700E14243 /* KSOWebKitTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSOWebKitTitleView.h; path = Private/KSOWebKitTitleView.h; sourceTree = "<group>"; };
 		079059A21EB80A3700E14243 /* KSOWebKitTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KSOWebKitTitleView.m; path = Private/KSOWebKitTitleView.m; sourceTree = "<group>"; };
+		079059A51EB8F2D900E14243 /* KSOWebKitTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSOWebKitTheme.h; sourceTree = "<group>"; };
+		079059A61EB8F2D900E14243 /* KSOWebKitTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSOWebKitTheme.m; sourceTree = "<group>"; };
+		079059A91EB9022800E14243 /* KSOFontAwesomeExtensions.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KSOFontAwesomeExtensions.framework; path = "Vendor/KSOFontAwesomeExtensions/build/Debug-iphoneos/KSOFontAwesomeExtensions.framework"; sourceTree = "<group>"; };
+		079059AB1EB9023100E14243 /* KSOFontAwesomeExtensions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KSOFontAwesomeExtensions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		079059AE1EB907C100E14243 /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				079059AA1EB9022800E14243 /* KSOFontAwesomeExtensions.framework in Frameworks */,
 				0790599C1EB803DF00E14243 /* Ditko.framework in Frameworks */,
 				0790598F1EB7FCEE00E14243 /* Stanley.framework in Frameworks */,
 				0790598D1EB7FCE900E14243 /* Agamotto.framework in Frameworks */,
@@ -107,6 +120,7 @@
 				079059951EB7FCFF00E14243 /* Agamotto.framework in Frameworks */,
 				079059911EB7FCF600E14243 /* Stanley.framework in Frameworks */,
 				0790599E1EB803E800E14243 /* Ditko.framework in Frameworks */,
+				079059AC1EB9023100E14243 /* KSOFontAwesomeExtensions.framework in Frameworks */,
 				079059971EB7FD0400E14243 /* KSOWebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -155,6 +169,8 @@
 		079059671EB7F97C00E14243 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				079059A51EB8F2D900E14243 /* KSOWebKitTheme.h */,
+				079059A61EB8F2D900E14243 /* KSOWebKitTheme.m */,
 				079059681EB7FA2100E14243 /* KSOWebKitViewController.h */,
 				079059691EB7FA2100E14243 /* KSOWebKitViewController.m */,
 				079059871EB7FB8000E14243 /* UIViewController+KSOWebKitExtensions.h */,
@@ -183,6 +199,7 @@
 		079059721EB7FB3900E14243 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				079059AE1EB907C100E14243 /* FontAwesome.ttf */,
 				079059731EB7FB3900E14243 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -191,6 +208,8 @@
 		0790598B1EB7FCE900E14243 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				079059AB1EB9023100E14243 /* KSOFontAwesomeExtensions.framework */,
+				079059A91EB9022800E14243 /* KSOFontAwesomeExtensions.framework */,
 				0790599D1EB803E800E14243 /* Ditko.framework */,
 				0790599B1EB803DF00E14243 /* Ditko.framework */,
 				079059941EB7FCFF00E14243 /* Agamotto.framework */,
@@ -219,6 +238,7 @@
 			files = (
 				079059891EB7FB8000E14243 /* UIViewController+KSOWebKitExtensions.h in Headers */,
 				0790595F1EB7F8A800E14243 /* KSOWebKit.h in Headers */,
+				079059A71EB8F2D900E14243 /* KSOWebKitTheme.h in Headers */,
 				079059A31EB80A3700E14243 /* KSOWebKitTitleView.h in Headers */,
 				0790596A1EB7FA2100E14243 /* KSOWebKitViewController.h in Headers */,
 			);
@@ -317,6 +337,7 @@
 				079059821EB7FB3900E14243 /* LaunchScreen.storyboard in Resources */,
 				0790597F1EB7FB3900E14243 /* Assets.xcassets in Resources */,
 				0790597D1EB7FB3900E14243 /* Main.storyboard in Resources */,
+				079059AF1EB907C100E14243 /* FontAwesome.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,6 +349,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0790598A1EB7FB8000E14243 /* UIViewController+KSOWebKitExtensions.m in Sources */,
+				079059A81EB8F2D900E14243 /* KSOWebKitTheme.m in Sources */,
 				079059A41EB80A3700E14243 /* KSOWebKitTitleView.m in Sources */,
 				0790596B1EB7FA2100E14243 /* KSOWebKitViewController.m in Sources */,
 			);
@@ -484,6 +506,7 @@
 					"$(PROJECT_DIR)/Vendor/Agamotto/build/Debug-iphoneos",
 					"$(PROJECT_DIR)/Vendor/Stanley/build/Debug-iphoneos",
 					"$(PROJECT_DIR)/Vendor/Ditko/build/Debug-iphoneos",
+					"$(PROJECT_DIR)/Vendor/KSOFontAwesomeExtensions/build/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/KSOWebKit/KSOWebKit-iOS-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -508,6 +531,7 @@
 					"$(PROJECT_DIR)/Vendor/Agamotto/build/Debug-iphoneos",
 					"$(PROJECT_DIR)/Vendor/Stanley/build/Debug-iphoneos",
 					"$(PROJECT_DIR)/Vendor/Ditko/build/Debug-iphoneos",
+					"$(PROJECT_DIR)/Vendor/KSOFontAwesomeExtensions/build/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/KSOWebKit/KSOWebKit-iOS-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";

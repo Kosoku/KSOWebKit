@@ -17,11 +17,14 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class KSOWebKitTheme;
 @protocol KSOWebKitViewControllerDelegate;
 
 @interface KSOWebKitViewController : UIViewController
 
 @property (weak,nonatomic,nullable) id<KSOWebKitViewControllerDelegate> delegate;
+
+@property (strong,nonatomic) KSOWebKitTheme *theme;
 
 @property (copy,nonatomic,nullable) NSURL *URL;
 
