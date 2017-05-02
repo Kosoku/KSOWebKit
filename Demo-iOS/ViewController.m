@@ -35,7 +35,12 @@
     [self KSO_presentWebKitViewControllerForURL:[NSURL URLWithString:self.textField.text] animated:YES navigationBarClass:Nil completion:nil];
 }
 - (IBAction)_pushAction:(id)sender {
-    [self KSO_pushWebKitViewControllerForURL:[NSURL URLWithString:self.textField.text] animated:YES completion:nil];
+    KSOWebKitViewController *viewController = [[KSOWebKitViewController alloc] init];
+    
+    [viewController setDisplayTitle:@"Custom Title"];
+    [viewController setURL:[NSURL URLWithString:self.textField.text]];
+    
+    [self.navigationController pushViewController:viewController animated:YES];
 }
 - (IBAction)_presentWithoutProgressAction:(id)sender {
     [self KSO_presentWebKitViewControllerForURL:[NSURL URLWithString:self.textField.text] animated:YES navigationBarClass:[UINavigationBar class] completion:nil];

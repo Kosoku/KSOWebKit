@@ -25,6 +25,7 @@
 + (UIFont *)_defaultURLFont;
 + (UIColor *)_defaultURLTextColor;
 + (UIImage *)_defaultHasOnlySecureContentImage;
++ (UIColor *)_defaultHasOnlySecureContentImageTintColor;
 @end
 
 @implementation KSOWebKitTheme
@@ -39,6 +40,7 @@
     retval->_URLTextColor = _URLTextColor;
     
     retval->_hasOnlySecureContentImage = _hasOnlySecureContentImage;
+    retval->_hasOnlySecureContentImageTintColor = _hasOnlySecureContentImageTintColor;
     
     return retval;
 }
@@ -46,6 +48,8 @@
 - (instancetype)initWithIdentifier:(NSString *)identifier {
     if (!(self = [super init]))
         return nil;
+    
+    NSParameterAssert(identifier != nil);
     
     _identifier = [identifier copy];
     
@@ -56,6 +60,7 @@
     _URLTextColor = [self.class _defaultURLTextColor];
     
     _hasOnlySecureContentImage = [self.class _defaultHasOnlySecureContentImage];
+    _hasOnlySecureContentImageTintColor = [self.class _defaultHasOnlySecureContentImageTintColor];
     
     return self;
 }
@@ -84,6 +89,9 @@
 - (void)setHasOnlySecureContentImage:(UIImage *)hasOnlySecureContentImage {
     _hasOnlySecureContentImage = hasOnlySecureContentImage ?: [self.class _defaultHasOnlySecureContentImage];
 }
+- (void)setHasOnlySecureContentImageTintColor:(UIColor *)hasOnlySecureContentImageTintColor {
+    _hasOnlySecureContentImageTintColor = hasOnlySecureContentImageTintColor ?: [self.class _defaultHasOnlySecureContentImageTintColor];
+}
 
 + (UIFont *)_defaultTitleFont; {
     return [UIFont boldSystemFontOfSize:17.0];
@@ -98,7 +106,11 @@
     return UIColor.darkGrayColor;
 }
 + (UIImage *)_defaultHasOnlySecureContentImage; {
+    // fa-lock
     return [UIImage KSO_fontAwesomeImageWithString:@"\uf023" size:CGSizeMake(16, 16)];
+}
++ (UIColor *)_defaultHasOnlySecureContentImageTintColor; {
+    return UIColor.darkGrayColor;
 }
 
 @end

@@ -14,26 +14,89 @@
 //  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import <UIKit/UIKit.h>
+#import <WebKit/WKNavigationAction.h>
+#import <WebKit/WKNavigationDelegate.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 @class KSOWebKitTheme;
 @protocol KSOWebKitViewControllerDelegate;
 
+/**
+ KSOWebKitViewController wraps an instance of WKWebView to display web content.
+ */
 @interface KSOWebKitViewController : UIViewController
 
+/**
+ Set and get the delegate of the receiver.
+ 
+ @see KSOWebKitViewControllerDelegate
+ */
 @property (weak,nonatomic,nullable) id<KSOWebKitViewControllerDelegate> delegate;
 
-@property (strong,nonatomic) KSOWebKitTheme *theme;
+/**
+ Set and get the theme of the receiver.
+ 
+ The default is KSOWebKitTheme.defaultTheme.
+ */
+@property (strong,nonatomic,null_resettable) KSOWebKitTheme *theme;
 
-@property (copy,nonatomic,nullable) NSURL *URL;
-
+/**
+ Set and get the display title of the receiver. If non-nil, it will displayed as the title of the receiver's navigationItem, otherwise the title will track the title property of the managed WKWebView.
+ 
+ The default is nil.
+ */
+@property (copy,nonatomic,nullable) NSString *displayTitle;
+/**
+ Set and get the done bar button item title, which is displayed in the navigation bar when the receiver is presented modally inside a UINavigationController. If nil, the standard done bar button item is displayed instead.
+ 
+ The default is nil.
+ */
+@property (copy,nonatomic,nullable) NSString *doneBarButtonItemTitle;
+/**
+ Set and get whether the receiver shows the standard action bar button item, retrieved using the UIBarButtonSystemItemAction constant.
+ 
+ The default is YES.
+ */
 @property (assign,nonatomic) BOOL showsActionBarButtonItem;
+
+/**
+ Set and get the URL string of the receiver. This funnels through setURLRequest:.
+ 
+ The default is nil.
+ */
+@property (copy,nonatomic,nullable) NSString *URLString;
+/**
+ Set and get the URL of the receiver. This funnels through setURLRequest:.
+ 
+ The default is nil.
+ */
+@property (copy,nonatomic,nullable) NSURL *URL;
+/**
+ Set and get the URL request of the receiver. Setting this to nil causes the receiver to stop loading the current URL request. Setting it to non-nil causes the receiver to begin loading the request.
+ */
+@property (copy,nonatomic,nullable) NSURLRequest *URLRequest;
 
 @end
 
+/**
+ Protocol describing the delegate of KSOWebKitViewController instances.
+ */
 @protocol KSOWebKitViewControllerDelegate <NSObject>
 @optional
+/**
+ Called to determine whether to procede with the provided navigation action. The delegate must invoke the provided *decisionHandler* with one of the WKNavigationActionPolicy constants once a decision has been made.
+ 
+ @param viewController The sender of the message
+ @param navigationAction The navigation action to evaluate
+ @param decisionHandler The block to invoke when a decision has been made
+ */
+- (void)webKitViewController:(KSOWebKitViewController *)viewController decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler;
+/**
+ Called when the done bar button item is tapped. The delegate is reqsponsible for dismissing the *viewController*.
+ 
+ @param viewController The sender of the message
+ */
 - (void)webKitViewControllerDidFinish:(KSOWebKitViewController *)viewController;
 @end
 

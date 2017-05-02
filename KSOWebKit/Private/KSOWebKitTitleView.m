@@ -16,6 +16,7 @@
 #import "KSOWebKitTitleView.h"
 #import "KSOWebKitViewController.h"
 #import "KSOWebKitTheme.h"
+#import "NSBundle+KSOWebKitPrivateExtensions.h"
 
 #import <Stanley/Stanley.h>
 #import <Agamotto/Agamotto.h>
@@ -26,6 +27,8 @@
 @property (strong,nonatomic) UILabel *titleLabel;
 @property (strong,nonatomic) UILabel *URLLabel;
 @property (strong,nonatomic) UIImageView *hasOnlySecureContentImageView;
+
+@property (assign,nonatomic) BOOL hasDisplayTitle;
 
 @property (weak,nonatomic) WKWebView *webView;
 @property (weak,nonatomic) KSOWebKitViewController *viewController;
@@ -69,7 +72,7 @@
     _webView = webView;
     _viewController = viewController;
     
-    NSString *placeholder = NSLocalizedStringWithDefaultValue(@"TITLE_VIEW_PLACEHOLDER", nil, [NSBundle mainBundle], @"Loading…", @"title view placeholder");
+    NSString *placeholder = NSLocalizedStringWithDefaultValue(@"TITLE_VIEW_PLACEHOLDER", nil, [NSBundle KSO_webKitFrameworkBundle], @"Loading…", @"title view placeholder");
     
     _titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     [_titleLabel setTextAlignment:NSTextAlignmentCenter];
@@ -87,41 +90,59 @@
     kstWeakify(self);
     [_webView KAG_addObserverForKeyPaths:@[@kstKeypath(_webView,title),@kstKeypath(_webView,URL),@kstKeypath(_webView,hasOnlySecureContent)] options:NSKeyValueObservingOptionInitial block:^(NSString * _Nonnull keyPath, id  _Nullable value, NSDictionary<NSKeyValueChangeKey,id> * _Nonnull change) {
         kstStrongify(self);
-        if ([keyPath isEqualToString:@kstKeypath(self.webView,title)]) {
-            [self.titleLabel setText:self.webView.title.length > 0 ? self.webView.title : placeholder];
-        }
-        else if ([keyPath isEqualToString:@kstKeypath(self.webView,URL)]) {
-            [self.URLLabel setText:self.webView.URL.absoluteString.length > 0 ? self.webView.URL.absoluteString : placeholder];
-            [self setNeedsLayout];
-        }
-        else if ([keyPath isEqualToString:@kstKeypath(self.webView,hasOnlySecureContent)]) {
-            if (self.webView.hasOnlySecureContent) {
-                if (self.hasOnlySecureContentImageView.superview == nil) {
-                    [self addSubview:self.hasOnlySecureContentImageView];
-                    [self setNeedsLayout];
+        KSTDispatchMainSync(^{
+            if ([keyPath isEqualToString:@kstKeypath(self.webView,title)]) {
+                if (!self.hasDisplayTitle) {
+                    [self.titleLabel setText:self.webView.title.length > 0 ? self.webView.title : placeholder];
                 }
             }
-            else {
-                if (self.hasOnlySecureContentImageView.superview != nil) {
-                    [self.hasOnlySecureContentImageView removeFromSuperview];
-                    [self setNeedsLayout];
+            else if ([keyPath isEqualToString:@kstKeypath(self.webView,URL)]) {
+                [self.URLLabel setText:self.webView.URL.absoluteString.length > 0 ? self.webView.URL.absoluteString : placeholder];
+                [self setNeedsLayout];
+            }
+            else if ([keyPath isEqualToString:@kstKeypath(self.webView,hasOnlySecureContent)]) {
+                if (self.webView.hasOnlySecureContent) {
+                    if (self.hasOnlySecureContentImageView.superview == nil) {
+                        [self addSubview:self.hasOnlySecureContentImageView];
+                        [self setNeedsLayout];
+                    }
+                }
+                else {
+                    if (self.hasOnlySecureContentImageView.superview != nil) {
+                        [self.hasOnlySecureContentImageView removeFromSuperview];
+                        [self setNeedsLayout];
+                    }
                 }
             }
-        }
+        });
     }];
     
-    [_viewController KAG_addObserverForKeyPath:@kstKeypath(_viewController,theme) options:NSKeyValueObservingOptionInitial block:^(NSString * _Nonnull keyPath, id  _Nullable value, NSDictionary<NSKeyValueChangeKey,id> * _Nonnull change) {
+    [_viewController KAG_addObserverForKeyPaths:@[@kstKeypath(_viewController,theme),@kstKeypath(_viewController,displayTitle)] options:NSKeyValueObservingOptionInitial block:^(NSString * _Nonnull keyPath, id  _Nullable value, NSDictionary<NSKeyValueChangeKey,id> * _Nonnull change) {
         kstStrongify(self);
-        [self.titleLabel setFont:self.viewController.theme.titleFont];
-        [self.titleLabel setTextColor:self.viewController.theme.titleTextColor];
-        
-        [self.URLLabel setFont:self.viewController.theme.URLFont];
-        [self.URLLabel setTextColor:self.viewController.theme.URLTextColor];
-        
-        [self.hasOnlySecureContentImageView setTintColor:self.viewController.theme.URLTextColor];
-        [self.hasOnlySecureContentImageView setImage:[self.viewController.theme.hasOnlySecureContentImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
-        
-        [self sizeToFit];
+        KSTDispatchMainSync(^{
+            if ([keyPath isEqualToString:@kstKeypath(self.viewController,theme)]) {
+                [self.titleLabel setFont:self.viewController.theme.titleFont];
+                [self.titleLabel setTextColor:self.viewController.theme.titleTextColor];
+                
+                [self.URLLabel setFont:self.viewController.theme.URLFont];
+                [self.URLLabel setTextColor:self.viewController.theme.URLTextColor];
+                
+                [self.hasOnlySecureContentImageView setTintColor:self.viewController.theme.hasOnlySecureContentImageTintColor];
+                [self.hasOnlySecureContentImageView setImage:[self.viewController.theme.hasOnlySecureContentImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
+                
+                [self sizeToFit];
+            }
+            else if ([keyPath isEqualToString:@kstKeypath(self.viewController,displayTitle)]) {
+                if (self.viewController.displayTitle.length > 0) {
+                    [self setHasDisplayTitle:YES];
+                    [self.titleLabel setText:self.viewController.displayTitle];
+                }
+                else {
+                    [self setHasDisplayTitle:NO];
+                    [self.titleLabel setText:self.webView.title.length > 0 ? self.webView.title : placeholder];
+                }
+            }
+        });
     }];
     
     return self;

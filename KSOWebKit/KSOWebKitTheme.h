@@ -17,20 +17,67 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/**
+ KSOWebKitTheme controls the appearance of a KSOWebKitViewController instance.
+ */
 @interface KSOWebKitTheme : NSObject <NSCopying>
 
+/**
+ Get the default theme.
+ */
 @property (class,readonly,nonatomic) KSOWebKitTheme *defaultTheme;
 
+/**
+ Get the theme identifier.
+ */
 @property (readonly,copy,nonatomic) NSString *identifier;
 
+/**
+ Set and get the font used for the title.
+ 
+ The default is [UIFont boldSystemFontOfSize:17.0].
+ */
 @property (strong,nonatomic,null_resettable) UIFont *titleFont;
+/**
+ Set and get the text color used for the title.
+ 
+ The default is UIColor.blackColor.
+ */
 @property (strong,nonatomic,null_resettable) UIColor *titleTextColor;
 
+/**
+ Set and get the font used for the URL.
+ 
+ The default is [UIFont systemFontOfSize:12.0].
+ */
 @property (strong,nonatomic,null_resettable) UIFont *URLFont;
+/**
+ Set and get the text color used for the URL.
+ 
+ The default is UIColor.grayColor.
+ */
 @property (strong,nonatomic,null_resettable) UIColor *URLTextColor;
 
+/**
+ Set and get the image displayed when the receiver is displaying only secure content.
+ 
+ The default is [UIImage KSO_fontAwesomeImageWithString:@"\uf023" size:CGSizeMake(16, 16)].
+ */
 @property (strong,nonatomic,null_resettable) UIImage *hasOnlySecureContentImage;
+/**
+ Set and get the color used to tint the hasOnlySecureContentImage.
+ 
+ The default is UIColor.grayColor.
+ */
+@property (strong,nonatomic,null_resettable) UIColor *hasOnlySecureContentImageTintColor;
 
+/**
+ Creates and returns an instance of the receiver with the provided *identifier*.
+ 
+ @param identifier The theme identifier
+ @return The initialized instance
+ @exception NSException Thrown if *identifier* is nil
+ */
 - (instancetype)initWithIdentifier:(NSString *)identifier NS_DESIGNATED_INITIALIZER;
 
 + (instancetype)new NS_UNAVAILABLE;

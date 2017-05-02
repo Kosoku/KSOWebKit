@@ -1,0 +1,1 @@
+genstrings -o $SRCROOT/KSOWebKit/en.lproj $SRCROOT/KSOWebKit/*.m $SRCROOT/KSOWebKit/Private/*.m

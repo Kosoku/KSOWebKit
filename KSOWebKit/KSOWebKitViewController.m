@@ -23,7 +23,7 @@
 
 #import <WebKit/WebKit.h>
 
-@interface KSOWebKitViewController ()
+@interface KSOWebKitViewController () <WKNavigationDelegate,WKUIDelegate>
 @property (strong,nonatomic) WKWebView *webView;
 @property (strong,nonatomic) UIBarButtonItem *activityIndicatorViewItem;
 @property (strong,nonatomic) UIBarButtonItem *actionBarButtonItem;
@@ -51,6 +51,8 @@
     
     [self setWebView:[[WKWebView alloc] initWithFrame:CGRectZero configuration:config]];
     [self.webView setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.webView setNavigationDelegate:self];
+    [self.webView setUIDelegate:self];
     [self.view addSubview:self.webView];
     
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[view]|" options:0 metrics:nil views:@{@"view": self.webView}]];
@@ -74,7 +76,7 @@
     }
     
     if (self.presentingViewController != nil) {
-        [self setDoneBarButtonItem:[UIBarButtonItem KDI_barButtonSystemItem:UIBarButtonSystemItemDone block:^(UIBarButtonItem * _Nonnull barButtonItem) {
+        void(^doneBlock)(UIBarButtonItem *) = ^(UIBarButtonItem *barButtonItem){
             kstStrongify(self);
             if ([self.delegate respondsToSelector:@selector(webKitViewControllerDidFinish:)]) {
                 [self.delegate webKitViewControllerDidFinish:self];
@@ -82,7 +84,14 @@
             else {
                 [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
             }
-        }]];
+        };
+        
+        if (self.doneBarButtonItemTitle.length == 0) {
+            [self setDoneBarButtonItem:[UIBarButtonItem KDI_barButtonSystemItem:UIBarButtonSystemItemDone block:doneBlock]];
+        }
+        else {
+            [self setDoneBarButtonItem:[UIBarButtonItem KDI_barButtonItemWithTitle:self.doneBarButtonItemTitle style:UIBarButtonItemStyleDone block:doneBlock]];
+        }
     }
     
     if (self.navigationController.KDI_progressNavigationBar == nil) {
@@ -96,7 +105,7 @@
         
         [self.webView KAG_addObserverForKeyPath:@kstKeypath(self.webView,loading) options:NSKeyValueObservingOptionInitial block:^(NSString * _Nonnull keyPath, id  _Nullable value, NSDictionary<NSKeyValueChangeKey,id> * _Nonnull change) {
             kstStrongify(self);
-            KSTDispatchMainAsync(^{
+            KSTDispatchMainSync(^{
                 if (self.webView.isLoading) {
                     [(UIActivityIndicatorView *)self.activityIndicatorViewItem.customView startAnimating];
                 }
@@ -125,7 +134,7 @@
     else {
         [self.webView KAG_addObserverForKeyPaths:@[@kstKeypath(self.webView,loading),@kstKeypath(self.webView,estimatedProgress)] options:0 block:^(NSString * _Nonnull keyPath, id  _Nullable value, NSDictionary<NSKeyValueChangeKey,id> * _Nonnull change) {
             kstStrongify(self);
-            KSTDispatchMainAsync(^{
+            KSTDispatchMainSync(^{
                 if ([keyPath isEqualToString:@kstKeypath(self.webView,loading)]) {
                     [self.navigationController.KDI_progressNavigationBar setProgressHidden:!self.webView.isLoading animated:YES];
                 }
@@ -162,14 +171,14 @@
         [self setHasPerformedSetup:YES];
         
         kstWeakify(self);
-        [self KAG_addObserverForKeyPath:@kstKeypath(self,URL) options:NSKeyValueObservingOptionInitial block:^(NSString * _Nonnull keyPath, NSURL * _Nullable value, NSDictionary<NSKeyValueChangeKey,id> * _Nonnull change) {
+        [self KAG_addObserverForKeyPath:@kstKeypath(self,URLRequest) options:NSKeyValueObservingOptionInitial block:^(NSString * _Nonnull keyPath, NSURLRequest * _Nullable value, NSDictionary<NSKeyValueChangeKey,id> * _Nonnull change) {
             kstStrongify(self);
-            KSTDispatchMainAsync(^{
+            KSTDispatchMainSync(^{
                 if (value == nil) {
                     [self.webView stopLoading];
                 }
                 else {
-                    [self.webView loadRequest:[NSURLRequest requestWithURL:value]];
+                    [self.webView loadRequest:value];
                 }
             });
         }];
@@ -178,7 +187,43 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     
+    [self.webView stopLoading];
     [self.navigationController.KDI_progressNavigationBar setProgressHidden:YES animated:YES];
+}
+
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
+    if ([self.delegate respondsToSelector:@selector(webKitViewController:decidePolicyForNavigationAction:decisionHandler:)]) {
+        [self.delegate webKitViewController:self decidePolicyForNavigationAction:navigationAction decisionHandler:decisionHandler];
+    }
+    else {
+        decisionHandler(WKNavigationActionPolicyAllow);
+    }
+}
+
+- (WKWebView *)webView:(WKWebView *)webView createWebViewWithConfiguration:(WKWebViewConfiguration *)configuration forNavigationAction:(WKNavigationAction *)navigationAction windowFeatures:(WKWindowFeatures *)windowFeatures {
+    if (navigationAction.targetFrame == nil) {
+        [self.webView loadRequest:navigationAction.request];
+    }
+    return nil;
+}
+
+- (void)setTheme:(KSOWebKitTheme *)theme {
+    _theme = theme ?: KSOWebKitTheme.defaultTheme;
+}
+
+@dynamic URLString;
+- (NSString *)URLString {
+    return self.URLRequest.URL.absoluteString;
+}
+- (void)setURLString:(NSString *)URLString {
+    [self setURLRequest:URLString.length == 0 ? nil : [NSURLRequest requestWithURL:[NSURL URLWithString:URLString]]];
+}
+@dynamic URL;
+- (NSURL *)URL {
+    return self.URLRequest.URL;
+}
+- (void)setURL:(NSURL *)URL {
+    [self setURLRequest:URL == nil ? nil : [NSURLRequest requestWithURL:URL]];
 }
 
 @end
