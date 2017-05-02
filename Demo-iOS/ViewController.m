@@ -16,6 +16,7 @@
 #import "ViewController.h"
 
 #import <KSOWebKit/KSOWebKit.h>
+#import <Ditko/Ditko.h>
 
 @interface ViewController ()
 @property (weak,nonatomic) IBOutlet UITextField *textField;
@@ -32,7 +33,16 @@
 }
 
 - (IBAction)_presentAction:(id)sender {
-    [self KSO_presentWebKitViewControllerForURL:[NSURL URLWithString:self.textField.text] animated:YES navigationBarClass:Nil completion:nil];
+    KSOWebKitViewController *viewController = [[KSOWebKitViewController alloc] init];
+    
+    [viewController setShowsActionBarButtonItem:NO];
+    [viewController setURL:[NSURL URLWithString:self.textField.text]];
+    
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithNavigationBarClass:[KDIProgressNavigationBar class] toolbarClass:Nil];
+    
+    [navigationController setViewControllers:@[viewController]];
+    
+    [self presentViewController:navigationController animated:YES completion:nil];
 }
 - (IBAction)_pushAction:(id)sender {
     KSOWebKitViewController *viewController = [[KSOWebKitViewController alloc] init];

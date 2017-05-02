@@ -127,6 +127,9 @@
             if (self.showsActionBarButtonItem) {
                 [self.navigationItem setLeftBarButtonItems:@[self.actionBarButtonItem]];
             }
+            else {
+                [self.navigationItem setLeftBarButtonItems:@[[UIBarButtonItem KDI_fixedSpaceBarButtonItemWithWidth:32.0]]];
+            }
             
             [self.navigationItem setRightBarButtonItems:@[self.doneBarButtonItem,self.activityIndicatorViewItem]];
         }
@@ -152,6 +155,9 @@
         else {
             if (self.showsActionBarButtonItem) {
                 [self.navigationItem setLeftBarButtonItems:@[self.actionBarButtonItem]];
+            }
+            else {
+                [self.navigationItem setLeftBarButtonItems:@[[UIBarButtonItem KDI_fixedSpaceBarButtonItemWithWidth:32.0]]];
             }
             
             [self.navigationItem setRightBarButtonItems:@[self.doneBarButtonItem]];
