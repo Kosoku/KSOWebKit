@@ -5,7 +5,7 @@
 [![Platform](http://img.shields.io/cocoapods/p/KSOWebKit.svg)]()
 [![License](http://img.shields.io/cocoapods/l/KSOWebKit.svg)](https://github.com/Kosoku/KSOWebKit/blob/master/license.txt)
 
-*KSOWebKit* is a wrapper for various `WebKit` classes.
+*KSOWebKit* is a wrapper for various `WebKit` classes, primarily `WKWebView`. It displays a progress bar embedded in the navigation bar and provides delegate methods to control which requests are loaded.
 
 ![demo](screenshots/demo.gif)
 

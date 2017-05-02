@@ -22,7 +22,7 @@ Pod::Spec.new do |s|
                        DESC
 
   s.homepage         = 'https://github.com/Kosoku/KSOWebKit'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
+  s.screenshots      = ['https://github.com/Kosoku/KSOWebKit/raw/master/screenshots/demo.gif']
   s.license          = { :type => 'BSD', :file => 'license.txt' }
   s.author           = { 'William Towe' => 'willbur1984@gmail.com' }
   s.source           = { :git => 'https://github.com/Kosoku/KSOWebKit.git', :tag => s.version.to_s }
