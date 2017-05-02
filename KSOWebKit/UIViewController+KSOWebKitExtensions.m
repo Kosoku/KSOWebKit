@@ -16,6 +16,8 @@
 #import "UIViewController+KSOWebKitExtensions.h"
 #import "KSOWebKitViewController.h"
 
+#import <Ditko/Ditko.h>
+
 @implementation UIViewController (KSOWebKitExtensions)
 
 - (void)KSO_presentWebKitViewControllerForURL:(NSURL *)URL animated:(BOOL)animated completion:(dispatch_block_t)completion {
@@ -23,7 +25,11 @@
     
     [viewController setURL:URL];
     
-    [self presentViewController:[[UINavigationController alloc] initWithRootViewController:viewController] animated:animated completion:completion];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithNavigationBarClass:[KDIProgressNavigationBar class] toolbarClass:Nil];
+    
+    [navigationController setViewControllers:@[viewController]];
+    
+    [self presentViewController:navigationController animated:animated completion:completion];
 }
 - (void)KSO_pushWebKitViewControllerForURL:(NSURL *)URL animated:(BOOL)animated; {
     KSOWebKitViewController *viewController = [[KSOWebKitViewController alloc] init];

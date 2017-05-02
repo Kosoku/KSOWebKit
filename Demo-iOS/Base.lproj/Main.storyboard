@@ -14,7 +14,7 @@
         <scene sceneID="O7M-nb-U1D">
             <objects>
                 <navigationController id="br7-jN-Dak" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nUW-UK-Lw7">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="nUW-UK-Lw7" customClass="KDIProgressNavigationBar">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

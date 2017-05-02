@@ -26,6 +26,9 @@
 		079059961EB7FCFF00E14243 /* Agamotto.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 079059941EB7FCFF00E14243 /* Agamotto.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		079059971EB7FD0400E14243 /* KSOWebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0790595A1EB7F8A800E14243 /* KSOWebKit.framework */; };
 		079059981EB7FD0400E14243 /* KSOWebKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0790595A1EB7F8A800E14243 /* KSOWebKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0790599C1EB803DF00E14243 /* Ditko.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0790599B1EB803DF00E14243 /* Ditko.framework */; };
+		0790599E1EB803E800E14243 /* Ditko.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0790599D1EB803E800E14243 /* Ditko.framework */; };
+		0790599F1EB803E800E14243 /* Ditko.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0790599D1EB803E800E14243 /* Ditko.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +50,7 @@
 			files = (
 				079059961EB7FCFF00E14243 /* Agamotto.framework in Embed Frameworks */,
 				079059921EB7FCF600E14243 /* Stanley.framework in Embed Frameworks */,
+				0790599F1EB803E800E14243 /* Ditko.framework in Embed Frameworks */,
 				079059981EB7FD0400E14243 /* KSOWebKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -77,6 +81,8 @@
 		0790598E1EB7FCEE00E14243 /* Stanley.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stanley.framework; path = "Vendor/Stanley/build/Debug-iphoneos/Stanley.framework"; sourceTree = "<group>"; };
 		079059901EB7FCF600E14243 /* Stanley.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Stanley.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		079059941EB7FCFF00E14243 /* Agamotto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Agamotto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0790599B1EB803DF00E14243 /* Ditko.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Ditko.framework; path = "Vendor/Ditko/build/Debug-iphoneos/Ditko.framework"; sourceTree = "<group>"; };
+		0790599D1EB803E800E14243 /* Ditko.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Ditko.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0790599C1EB803DF00E14243 /* Ditko.framework in Frameworks */,
 				0790598F1EB7FCEE00E14243 /* Stanley.framework in Frameworks */,
 				0790598D1EB7FCE900E14243 /* Agamotto.framework in Frameworks */,
 			);
@@ -95,6 +102,7 @@
 			files = (
 				079059951EB7FCFF00E14243 /* Agamotto.framework in Frameworks */,
 				079059911EB7FCF600E14243 /* Stanley.framework in Frameworks */,
+				0790599E1EB803E800E14243 /* Ditko.framework in Frameworks */,
 				079059971EB7FD0400E14243 /* KSOWebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -178,6 +186,8 @@
 		0790598B1EB7FCE900E14243 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0790599D1EB803E800E14243 /* Ditko.framework */,
+				0790599B1EB803DF00E14243 /* Ditko.framework */,
 				079059941EB7FCFF00E14243 /* Agamotto.framework */,
 				079059901EB7FCF600E14243 /* Stanley.framework */,
 				0790598E1EB7FCEE00E14243 /* Stanley.framework */,
@@ -457,6 +467,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Vendor/Agamotto/build/Debug-iphoneos",
 					"$(PROJECT_DIR)/Vendor/Stanley/build/Debug-iphoneos",
+					"$(PROJECT_DIR)/Vendor/Ditko/build/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/KSOWebKit/KSOWebKit-iOS-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -480,6 +491,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Vendor/Agamotto/build/Debug-iphoneos",
 					"$(PROJECT_DIR)/Vendor/Stanley/build/Debug-iphoneos",
+					"$(PROJECT_DIR)/Vendor/Ditko/build/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/KSOWebKit/KSOWebKit-iOS-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";

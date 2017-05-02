@@ -17,10 +17,19 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol KSOWebKitViewControllerDelegate;
+
 @interface KSOWebKitViewController : UIViewController
+
+@property (weak,nonatomic,nullable) id<KSOWebKitViewControllerDelegate> delegate;
 
 @property (copy,nonatomic,nullable) NSURL *URL;
 
+@end
+
+@protocol KSOWebKitViewControllerDelegate <NSObject>
+@optional
+- (void)webKitViewControllerDidFinish:(KSOWebKitViewController *)viewController;
 @end
 
 NS_ASSUME_NONNULL_END

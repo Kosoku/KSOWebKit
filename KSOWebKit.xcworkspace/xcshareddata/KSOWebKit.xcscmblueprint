@@ -1,15 +1,20 @@
 {
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "8244F3E46D26AAF61DD4209BB1E33866BD490F5D",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
 
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
-    "6C4624F052CCBB7D5EC749C459613039B6B8C960" : 9223372036854775807,
-    "C94B06A26B26F3DFAC67E018206B5755A8E083DD" : 9223372036854775807
+    "8244F3E46D26AAF61DD4209BB1E33866BD490F5D" : 9223372036854775807,
+    "95DFEE02B27284838A8FA3A07714FEA27B4CE167" : 9223372036854775807,
+    "C94B06A26B26F3DFAC67E018206B5755A8E083DD" : 9223372036854775807,
+    "6C4624F052CCBB7D5EC749C459613039B6B8C960" : 9223372036854775807
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "F6D17925-91E9-46D2-B2DF-A016C786A64E",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "6C4624F052CCBB7D5EC749C459613039B6B8C960" : "KSOWebKit\/Vendor\/Agamotto\/",
-    "C94B06A26B26F3DFAC67E018206B5755A8E083DD" : "KSOWebKit\/Vendor\/Stanley\/"
+    "8244F3E46D26AAF61DD4209BB1E33866BD490F5D" : "KSOWebKit\/",
+    "95DFEE02B27284838A8FA3A07714FEA27B4CE167" : "KSOWebKit\/Vendor\/Ditko\/",
+    "C94B06A26B26F3DFAC67E018206B5755A8E083DD" : "KSOWebKit\/Vendor\/Stanley\/",
+    "6C4624F052CCBB7D5EC749C459613039B6B8C960" : "KSOWebKit\/Vendor\/Agamotto\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "KSOWebKit",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
@@ -19,6 +24,16 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Kosoku\/Agamotto.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "6C4624F052CCBB7D5EC749C459613039B6B8C960"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Kosoku\/KSOWebKit.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "8244F3E46D26AAF61DD4209BB1E33866BD490F5D"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Kosoku\/Ditko.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "95DFEE02B27284838A8FA3A07714FEA27B4CE167"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Kosoku\/Stanley.git",

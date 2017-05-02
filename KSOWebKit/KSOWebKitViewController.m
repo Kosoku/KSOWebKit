@@ -17,6 +17,7 @@
 
 #import <Stanley/Stanley.h>
 #import <Agamotto/Agamotto.h>
+#import <Ditko/Ditko.h>
 
 #import <WebKit/WebKit.h>
 
@@ -39,6 +40,31 @@
     
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[view]|" options:0 metrics:nil views:@{@"view": self.webView}]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[view]|" options:0 metrics:nil views:@{@"view": self.webView}]];
+    
+    kstWeakify(self);
+    [self.webView KAG_addObserverForKeyPaths:@[@kstKeypath(self.webView,loading),@kstKeypath(self.webView,estimatedProgress)] options:0 block:^(NSString * _Nonnull keyPath, id  _Nullable value, NSDictionary<NSKeyValueChangeKey,id> * _Nonnull change) {
+        kstStrongify(self);
+        KSTDispatchMainAsync(^{
+            if ([keyPath isEqualToString:@kstKeypath(self.webView,loading)]) {
+                [self.navigationController.KDI_progressNavigationBar setProgressHidden:!self.webView.isLoading animated:YES];
+            }
+            else if ([keyPath isEqualToString:@kstKeypath(self.webView,estimatedProgress)]) {
+                [self.navigationController.KDI_progressNavigationBar setProgress:self.webView.estimatedProgress animated:YES];
+            }
+        });
+    }];
+    
+    if (self.presentingViewController != nil) {
+        [self.navigationItem setRightBarButtonItems:@[[UIBarButtonItem KDI_barButtonSystemItem:UIBarButtonSystemItemDone block:^(UIBarButtonItem * _Nonnull barButtonItem) {
+            kstStrongify(self);
+            if ([self.delegate respondsToSelector:@selector(webKitViewControllerDidFinish:)]) {
+                [self.delegate webKitViewControllerDidFinish:self];
+            }
+            else {
+                [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+            }
+        }]]];
+    }
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -59,6 +85,11 @@
             });
         }];
     }
+}
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [self.navigationController.KDI_progressNavigationBar setProgressHidden:YES animated:NO];
 }
 
 @end
