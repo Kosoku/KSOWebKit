@@ -19,6 +19,32 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/**
+ Options mask describing possible values for toolbar options.
+ */
+typedef NS_OPTIONS(NSUInteger, KSOWebKitViewControllerToolbarOptions) {
+    /**
+     No toolbar items are displayed and the toolbar will be hidden.
+     */
+    KSOWebKitViewControllerToolbarOptionsNone = 0,
+    /**
+     The back item will be displayed. Similar to Safari.
+     */
+    KSOWebKitViewControllerToolbarOptionsBack = 1 << 0,
+    /**
+     The forward item will be displayed. Similar to Safari.
+     */
+    KSOWebKitViewControllerToolbarOptionsForward = 1 << 1,
+    /**
+     The action item will be displayed. This is the standard system action item.
+     */
+    KSOWebKitViewControllerToolbarOptionsAction = 1 << 2,
+    /**
+     All items will be displayed. This is the default.
+     */
+    KSOWebKitViewControllerToolbarOptionsAll = KSOWebKitViewControllerToolbarOptionsBack| KSOWebKitViewControllerToolbarOptionsForward|KSOWebKitViewControllerToolbarOptionsAction
+};
+
 @class KSOWebKitTheme;
 @protocol KSOWebKitViewControllerDelegate;
 
@@ -54,11 +80,13 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (copy,nonatomic,nullable) NSString *doneBarButtonItemTitle;
 /**
- Set and get whether the receiver shows the standard action bar button item, retrieved using the UIBarButtonSystemItemAction constant.
+ Set and get the toolbar options of the receiver. This value controls whether to toolbar is shown and what items are displayed.
  
- The default is YES.
+ The default is KSOWebKitViewControllerToolbarOptionsAll.
+ 
+ @see KSOWebKitViewControllerToolbarOptions
  */
-@property (assign,nonatomic) BOOL showsActionBarButtonItem;
+@property (assign,nonatomic) KSOWebKitViewControllerToolbarOptions toolbarOptions;
 
 /**
  Set and get the URL string of the receiver. This funnels through setURLRequest:.

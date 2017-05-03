@@ -20,14 +20,20 @@
 #import <Stanley/Stanley.h>
 #import <Agamotto/Agamotto.h>
 #import <Ditko/Ditko.h>
+#import <KSOFontAwesomeExtensions/KSOFontAwesomeExtensions.h>
 
 #import <WebKit/WebKit.h>
+
+static CGFloat const kFixedItemWidth = 32.0;
+static CGSize const kToolbarIconSize = {.width=25.0, .height=25.0};
 
 @interface KSOWebKitViewController () <WKNavigationDelegate,WKUIDelegate>
 @property (strong,nonatomic) WKWebView *webView;
 @property (strong,nonatomic) UIBarButtonItem *activityIndicatorViewItem;
 @property (strong,nonatomic) UIBarButtonItem *actionBarButtonItem;
 @property (strong,nonatomic) UIBarButtonItem *doneBarButtonItem;
+@property (strong,nonatomic) UIBarButtonItem *backBarButtonItem;
+@property (strong,nonatomic) UIBarButtonItem *forwardBarButtonItem;
 
 @property (assign,nonatomic) BOOL hasPerformedSetup;
 @end
@@ -39,7 +45,7 @@
         return nil;
     
     _theme = KSOWebKitTheme.defaultTheme;
-    _showsActionBarButtonItem = YES;
+    _toolbarOptions = KSOWebKitViewControllerToolbarOptionsAll;
     
     return self;
 }
@@ -59,21 +65,19 @@
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[view]|" options:0 metrics:nil views:@{@"view": self.webView}]];
     
     kstWeakify(self);
-    if (self.showsActionBarButtonItem) {
-        [self setActionBarButtonItem:[UIBarButtonItem KDI_barButtonSystemItem:UIBarButtonSystemItemAction block:^(UIBarButtonItem *barButtonItem){
-            kstStrongify(self);
-            if (self.webView.URL.isFileURL) {
-                UIDocumentInteractionController *controller = [UIDocumentInteractionController interactionControllerWithURL:self.webView.URL];
-                
-                [controller presentOptionsMenuFromBarButtonItem:barButtonItem animated:YES];
-            }
-            else {
-                UIActivityViewController *controller = [[UIActivityViewController alloc] initWithActivityItems:@[self.webView.URL] applicationActivities:nil];
-                
-                [self presentViewController:controller animated:YES completion:nil];
-            }
-        }]];
-    }
+    [self setActionBarButtonItem:[UIBarButtonItem KDI_barButtonSystemItem:UIBarButtonSystemItemAction block:^(UIBarButtonItem *barButtonItem){
+        kstStrongify(self);
+        if (self.webView.URL.isFileURL) {
+            UIDocumentInteractionController *controller = [UIDocumentInteractionController interactionControllerWithURL:self.webView.URL];
+            
+            [controller presentOptionsMenuFromBarButtonItem:barButtonItem animated:YES];
+        }
+        else {
+            UIActivityViewController *controller = [[UIActivityViewController alloc] initWithActivityItems:@[self.webView.URL] applicationActivities:nil];
+            
+            [self presentViewController:controller animated:YES completion:nil];
+        }
+    }]];
     
     if (self.presentingViewController != nil) {
         void(^doneBlock)(UIBarButtonItem *) = ^(UIBarButtonItem *barButtonItem){
@@ -116,22 +120,11 @@
         }];
         
         if (self.presentingViewController == nil) {
-            if (self.showsActionBarButtonItem) {
-                [self.navigationItem setRightBarButtonItems:@[self.actionBarButtonItem,self.activityIndicatorViewItem]];
-            }
-            else {
-                [self.navigationItem setRightBarButtonItems:@[self.activityIndicatorViewItem]];
-            }
+            [self.navigationItem setRightBarButtonItems:@[self.activityIndicatorViewItem]];
         }
         else {
-            if (self.showsActionBarButtonItem) {
-                [self.navigationItem setLeftBarButtonItems:@[self.actionBarButtonItem]];
-            }
-            else {
-                [self.navigationItem setLeftBarButtonItems:@[[UIBarButtonItem KDI_fixedSpaceBarButtonItemWithWidth:32.0]]];
-            }
-            
-            [self.navigationItem setRightBarButtonItems:@[self.doneBarButtonItem,self.activityIndicatorViewItem]];
+            [self.navigationItem setLeftBarButtonItems:@[self.activityIndicatorViewItem]];
+            [self.navigationItem setRightBarButtonItems:@[self.doneBarButtonItem]];
         }
     }
     else {
@@ -148,18 +141,10 @@
         }];
         
         if (self.presentingViewController == nil) {
-            if (self.showsActionBarButtonItem) {
-                [self.navigationItem setRightBarButtonItems:@[self.actionBarButtonItem]];
-            }
+            [self.navigationItem setRightBarButtonItems:@[[UIBarButtonItem KDI_fixedSpaceBarButtonItemWithWidth:kFixedItemWidth]]];
         }
         else {
-            if (self.showsActionBarButtonItem) {
-                [self.navigationItem setLeftBarButtonItems:@[self.actionBarButtonItem]];
-            }
-            else {
-                [self.navigationItem setLeftBarButtonItems:@[[UIBarButtonItem KDI_fixedSpaceBarButtonItemWithWidth:32.0]]];
-            }
-            
+            [self.navigationItem setLeftBarButtonItems:@[[UIBarButtonItem KDI_fixedSpaceBarButtonItemWithWidth:kFixedItemWidth]]];
             [self.navigationItem setRightBarButtonItems:@[self.doneBarButtonItem]];
         }
     }
@@ -169,9 +154,49 @@
     [titleView sizeToFit];
     
     [self.navigationItem setTitleView:titleView];
+    
+    [self setBackBarButtonItem:[UIBarButtonItem KDI_barButtonItemWithImage:[[UIImage KSO_fontAwesomeImageWithString:@"\uf053" size:kToolbarIconSize] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] style:UIBarButtonItemStylePlain block:^(UIBarButtonItem * _Nonnull barButtonItem) {
+        kstStrongify(self);
+        [self.webView goBack];
+    }]];
+    [self setForwardBarButtonItem:[UIBarButtonItem KDI_barButtonItemWithImage:[[UIImage KSO_fontAwesomeImageWithString:@"\uf054" size:kToolbarIconSize] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] style:UIBarButtonItemStylePlain block:^(UIBarButtonItem * _Nonnull barButtonItem) {
+        kstStrongify(self);
+        [self.webView goForward];
+    }]];
+    
+    [self.webView KAG_addObserverForKeyPaths:@[@kstKeypath(self.webView,canGoBack),@kstKeypath(self.webView,canGoForward)] options:NSKeyValueObservingOptionInitial block:^(NSString * _Nonnull keyPath, id  _Nullable value, NSDictionary<NSKeyValueChangeKey,id> * _Nonnull change) {
+        kstStrongify(self);
+        KSTDispatchMainSync(^{
+            [self.backBarButtonItem setEnabled:self.webView.canGoBack];
+            [self.forwardBarButtonItem setEnabled:self.webView.canGoForward];
+        });
+    }];
+    
+    if (self.toolbarOptions != KSOWebKitViewControllerToolbarOptionsNone) {
+        NSMutableArray *items = [[NSMutableArray alloc] init];
+        
+        [items addObject:[UIBarButtonItem KDI_flexibleSpaceBarButtonItem]];
+        
+        if (self.toolbarOptions & KSOWebKitViewControllerToolbarOptionsBack) {
+            [items addObject:self.backBarButtonItem];
+            [items addObject:[UIBarButtonItem KDI_flexibleSpaceBarButtonItem]];
+        }
+        if (self.toolbarOptions & KSOWebKitViewControllerToolbarOptionsForward) {
+            [items addObject:self.forwardBarButtonItem];
+            [items addObject:[UIBarButtonItem KDI_flexibleSpaceBarButtonItem]];
+        }
+        if (self.toolbarOptions & KSOWebKitViewControllerToolbarOptionsAction) {
+            [items addObject:self.actionBarButtonItem];
+            [items addObject:[UIBarButtonItem KDI_flexibleSpaceBarButtonItem]];
+        }
+        
+        [self setToolbarItems:items];
+    }
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+    [self.navigationController setToolbarHidden:self.toolbarOptions == KSOWebKitViewControllerToolbarOptionsNone animated:animated];
     
     if (!self.hasPerformedSetup) {
         [self setHasPerformedSetup:YES];

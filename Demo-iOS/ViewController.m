@@ -35,7 +35,6 @@
 - (IBAction)_presentAction:(id)sender {
     KSOWebKitViewController *viewController = [[KSOWebKitViewController alloc] init];
     
-    [viewController setShowsActionBarButtonItem:NO];
     [viewController setURL:[NSURL URLWithString:self.textField.text]];
     
     UINavigationController *navigationController = [[UINavigationController alloc] initWithNavigationBarClass:[KDIProgressNavigationBar class] toolbarClass:Nil];
