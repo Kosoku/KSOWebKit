@@ -219,7 +219,8 @@ static CGSize const kToolbarIconSize = {.width=25.0, .height=25.0};
     [super viewWillDisappear:animated];
     
     [self.webView stopLoading];
-    [self.navigationController.KDI_progressNavigationBar setProgressHidden:YES animated:YES];
+    [self.navigationController.KDI_progressNavigationBar setProgressHidden:YES animated:NO];
+    [self.navigationController.KDI_progressNavigationBar setProgress:0.0];
 }
 
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
