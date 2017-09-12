@@ -204,7 +204,7 @@ static CGSize const kToolbarIconSize = {.width=25.0, .height=25.0};
         kstWeakify(self);
         [self KAG_addObserverForKeyPath:@kstKeypath(self,URLRequest) options:NSKeyValueObservingOptionInitial block:^(NSString * _Nonnull keyPath, NSURLRequest * _Nullable value, NSDictionary<NSKeyValueChangeKey,id> * _Nonnull change) {
             kstStrongify(self);
-            KSTDispatchMainSync(^{
+            KSTDispatchMainAsync(^{
                 if (value == nil) {
                     [self.webView stopLoading];
                 }
