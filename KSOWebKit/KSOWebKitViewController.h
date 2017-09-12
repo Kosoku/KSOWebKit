@@ -121,7 +121,7 @@ typedef NS_OPTIONS(NSUInteger, KSOWebKitViewControllerToolbarOptions) {
  */
 - (void)webKitViewController:(KSOWebKitViewController *)viewController decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler;
 /**
- Called when the done bar button item is tapped. The delegate is reqsponsible for dismissing the *viewController*.
+ Called when the done bar button item is tapped. If implemented, the delegate is reqsponsible for dismissing the *viewController*.
  
  @param viewController The sender of the message
  */
