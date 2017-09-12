@@ -28,6 +28,7 @@ static CGFloat const kFixedItemWidth = 32.0;
 static CGSize const kToolbarIconSize = {.width=25.0, .height=25.0};
 
 @interface KSOWebKitViewController () <WKNavigationDelegate,WKUIDelegate>
+@property (strong,nonatomic) UIProgressView *progressView;
 @property (strong,nonatomic) WKWebView *webView;
 @property (strong,nonatomic) UIBarButtonItem *activityIndicatorViewItem;
 @property (strong,nonatomic) UIBarButtonItem *actionBarButtonItem;
@@ -61,8 +62,8 @@ static CGSize const kToolbarIconSize = {.width=25.0, .height=25.0};
     [self.webView setUIDelegate:self];
     [self.view addSubview:self.webView];
     
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[view]|" options:0 metrics:nil views:@{@"view": self.webView}]];
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[view]|" options:0 metrics:nil views:@{@"view": self.webView}]];
+    [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[view]|" options:0 metrics:nil views:@{@"view": self.webView}]];
+    [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[view]|" options:0 metrics:nil views:@{@"view": self.webView}]];
     
     kstWeakify(self);
     [self setActionBarButtonItem:[UIBarButtonItem KDI_barButtonSystemItem:UIBarButtonSystemItemAction block:^(UIBarButtonItem *barButtonItem){
@@ -98,55 +99,80 @@ static CGSize const kToolbarIconSize = {.width=25.0, .height=25.0};
         }
     }
     
-    if (self.navigationController.KDI_progressNavigationBar == nil) {
-        [self setActivityIndicatorViewItem:[[UIBarButtonItem alloc] initWithCustomView:({
-            UIActivityIndicatorView *retval = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    if (self.progressDisplayMode == KSOWebKitViewControllerProgressDisplayModeNavigationBar) {
+        if (self.navigationController.KDI_progressNavigationBar == nil) {
+            [self setActivityIndicatorViewItem:[[UIBarButtonItem alloc] initWithCustomView:({
+                UIActivityIndicatorView *retval = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+                
+                [retval setHidesWhenStopped:YES];
+                
+                retval;
+            })]];
             
-            [retval setHidesWhenStopped:YES];
+            [self.webView KAG_addObserverForKeyPath:@kstKeypath(self.webView,loading) options:NSKeyValueObservingOptionInitial block:^(NSString * _Nonnull keyPath, id  _Nullable value, NSDictionary<NSKeyValueChangeKey,id> * _Nonnull change) {
+                kstStrongify(self);
+                KSTDispatchMainAsync(^{
+                    if (self.webView.isLoading) {
+                        [(UIActivityIndicatorView *)self.activityIndicatorViewItem.customView startAnimating];
+                    }
+                    else {
+                        [(UIActivityIndicatorView *)self.activityIndicatorViewItem.customView stopAnimating];
+                    }
+                });
+            }];
             
-            retval;
-        })]];
-        
-        [self.webView KAG_addObserverForKeyPath:@kstKeypath(self.webView,loading) options:NSKeyValueObservingOptionInitial block:^(NSString * _Nonnull keyPath, id  _Nullable value, NSDictionary<NSKeyValueChangeKey,id> * _Nonnull change) {
-            kstStrongify(self);
-            KSTDispatchMainAsync(^{
-                if (self.webView.isLoading) {
-                    [(UIActivityIndicatorView *)self.activityIndicatorViewItem.customView startAnimating];
-                }
-                else {
-                    [(UIActivityIndicatorView *)self.activityIndicatorViewItem.customView stopAnimating];
-                }
-            });
-        }];
-        
-        if (self.presentingViewController == nil) {
-            [self.navigationItem setRightBarButtonItems:@[self.activityIndicatorViewItem]];
+            if (self.presentingViewController == nil) {
+                [self.navigationItem setRightBarButtonItems:@[self.activityIndicatorViewItem]];
+            }
+            else {
+                [self.navigationItem setLeftBarButtonItems:@[self.activityIndicatorViewItem]];
+                [self.navigationItem setRightBarButtonItems:@[self.doneBarButtonItem]];
+            }
         }
         else {
-            [self.navigationItem setLeftBarButtonItems:@[self.activityIndicatorViewItem]];
-            [self.navigationItem setRightBarButtonItems:@[self.doneBarButtonItem]];
+            [self.webView KAG_addObserverForKeyPaths:@[@kstKeypath(self.webView,loading),@kstKeypath(self.webView,estimatedProgress)] options:0 block:^(NSString * _Nonnull keyPath, id  _Nullable value, NSDictionary<NSKeyValueChangeKey,id> * _Nonnull change) {
+                kstStrongify(self);
+                KSTDispatchMainAsync(^{
+                    if ([keyPath isEqualToString:@kstKeypath(self.webView,loading)]) {
+                        [self.navigationController.KDI_progressNavigationBar setProgressHidden:!self.webView.isLoading animated:YES];
+                    }
+                    else if ([keyPath isEqualToString:@kstKeypath(self.webView,estimatedProgress)]) {
+                        [self.navigationController.KDI_progressNavigationBar setProgress:self.webView.estimatedProgress animated:YES];
+                    }
+                });
+            }];
+            
+            if (self.presentingViewController == nil) {
+                [self.navigationItem setRightBarButtonItems:@[[UIBarButtonItem KDI_fixedSpaceBarButtonItemWithWidth:kFixedItemWidth]]];
+            }
+            else {
+                [self.navigationItem setLeftBarButtonItems:@[[UIBarButtonItem KDI_fixedSpaceBarButtonItemWithWidth:kFixedItemWidth]]];
+                [self.navigationItem setRightBarButtonItems:@[self.doneBarButtonItem]];
+            }
         }
     }
-    else {
+    else if (self.progressDisplayMode == KSOWebKitViewControllerProgressDisplayModeSubview) {
+        [self setProgressView:[[UIProgressView alloc] initWithFrame:CGRectZero]];
+        [self.progressView setTranslatesAutoresizingMaskIntoConstraints:NO];
+        [self.progressView setAlpha:0.0];
+        [self.view addSubview:self.progressView];
+        
+        [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[view]|" options:0 metrics:nil views:@{@"view": self.progressView}]];
+        [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[view]" options:0 metrics:nil views:@{@"view": self.progressView}]];
+        
         [self.webView KAG_addObserverForKeyPaths:@[@kstKeypath(self.webView,loading),@kstKeypath(self.webView,estimatedProgress)] options:0 block:^(NSString * _Nonnull keyPath, id  _Nullable value, NSDictionary<NSKeyValueChangeKey,id> * _Nonnull change) {
             kstStrongify(self);
             KSTDispatchMainAsync(^{
                 if ([keyPath isEqualToString:@kstKeypath(self.webView,loading)]) {
-                    [self.navigationController.KDI_progressNavigationBar setProgressHidden:!self.webView.isLoading animated:YES];
+                    [UIView animateWithDuration:UINavigationControllerHideShowBarDuration delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+                        [self.progressView setAlpha:self.webView.isLoading ? 1.0 : 0.0];
+                    } completion:nil];
                 }
                 else if ([keyPath isEqualToString:@kstKeypath(self.webView,estimatedProgress)]) {
-                    [self.navigationController.KDI_progressNavigationBar setProgress:self.webView.estimatedProgress animated:YES];
+                    [self.progressView setProgress:self.webView.estimatedProgress animated:YES];
                 }
             });
         }];
-        
-        if (self.presentingViewController == nil) {
-            [self.navigationItem setRightBarButtonItems:@[[UIBarButtonItem KDI_fixedSpaceBarButtonItemWithWidth:kFixedItemWidth]]];
-        }
-        else {
-            [self.navigationItem setLeftBarButtonItems:@[[UIBarButtonItem KDI_fixedSpaceBarButtonItemWithWidth:kFixedItemWidth]]];
-            [self.navigationItem setRightBarButtonItems:@[self.doneBarButtonItem]];
-        }
     }
     
     KSOWebKitTitleView *titleView = [[KSOWebKitTitleView alloc] initWithFrame:CGRectZero webView:self.webView viewController:self];
