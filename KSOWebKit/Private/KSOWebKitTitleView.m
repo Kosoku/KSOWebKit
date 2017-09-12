@@ -90,7 +90,7 @@
     kstWeakify(self);
     [_webView KAG_addObserverForKeyPaths:@[@kstKeypath(_webView,title),@kstKeypath(_webView,URL),@kstKeypath(_webView,hasOnlySecureContent)] options:NSKeyValueObservingOptionInitial block:^(NSString * _Nonnull keyPath, id  _Nullable value, NSDictionary<NSKeyValueChangeKey,id> * _Nonnull change) {
         kstStrongify(self);
-        KSTDispatchMainSync(^{
+        KSTDispatchMainAsync(^{
             if ([keyPath isEqualToString:@kstKeypath(self.webView,title)]) {
                 if (!self.hasDisplayTitle) {
                     [self.titleLabel setText:self.webView.title.length > 0 ? self.webView.title : placeholder];
@@ -119,7 +119,7 @@
     
     [_viewController KAG_addObserverForKeyPaths:@[@kstKeypath(_viewController,theme),@kstKeypath(_viewController,displayTitle)] options:NSKeyValueObservingOptionInitial block:^(NSString * _Nonnull keyPath, id  _Nullable value, NSDictionary<NSKeyValueChangeKey,id> * _Nonnull change) {
         kstStrongify(self);
-        KSTDispatchMainSync(^{
+        KSTDispatchMainAsync(^{
             if ([keyPath isEqualToString:@kstKeypath(self.viewController,theme)]) {
                 [self.titleLabel setFont:self.viewController.theme.titleFont];
                 [self.titleLabel setTextColor:self.viewController.theme.titleTextColor];

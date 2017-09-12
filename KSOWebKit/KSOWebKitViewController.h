@@ -19,6 +19,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef NS_ENUM(NSInteger, KSOWebKitViewControllerProgressDisplayMode) {
+    KSOWebKitViewControllerProgressDisplayModeNavigationBar,
+    KSOWebKitViewControllerProgressDisplayModeSubview
+};
+
 /**
  Options mask describing possible values for toolbar options.
  */
@@ -79,6 +84,7 @@ typedef NS_OPTIONS(NSUInteger, KSOWebKitViewControllerToolbarOptions) {
  The default is nil.
  */
 @property (copy,nonatomic,nullable) NSString *doneBarButtonItemTitle;
+@property (assign,nonatomic) KSOWebKitViewControllerProgressDisplayMode progressDisplayMode;
 /**
  Set and get the toolbar options of the receiver. This value controls whether to toolbar is shown and what items are displayed.
  

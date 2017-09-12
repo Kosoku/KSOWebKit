@@ -109,7 +109,7 @@ static CGSize const kToolbarIconSize = {.width=25.0, .height=25.0};
         
         [self.webView KAG_addObserverForKeyPath:@kstKeypath(self.webView,loading) options:NSKeyValueObservingOptionInitial block:^(NSString * _Nonnull keyPath, id  _Nullable value, NSDictionary<NSKeyValueChangeKey,id> * _Nonnull change) {
             kstStrongify(self);
-            KSTDispatchMainSync(^{
+            KSTDispatchMainAsync(^{
                 if (self.webView.isLoading) {
                     [(UIActivityIndicatorView *)self.activityIndicatorViewItem.customView startAnimating];
                 }
@@ -130,7 +130,7 @@ static CGSize const kToolbarIconSize = {.width=25.0, .height=25.0};
     else {
         [self.webView KAG_addObserverForKeyPaths:@[@kstKeypath(self.webView,loading),@kstKeypath(self.webView,estimatedProgress)] options:0 block:^(NSString * _Nonnull keyPath, id  _Nullable value, NSDictionary<NSKeyValueChangeKey,id> * _Nonnull change) {
             kstStrongify(self);
-            KSTDispatchMainSync(^{
+            KSTDispatchMainAsync(^{
                 if ([keyPath isEqualToString:@kstKeypath(self.webView,loading)]) {
                     [self.navigationController.KDI_progressNavigationBar setProgressHidden:!self.webView.isLoading animated:YES];
                 }
