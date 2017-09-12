@@ -19,8 +19,17 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/**
+ Typedef for possible progress display mode values.
+ */
 typedef NS_ENUM(NSInteger, KSOWebKitViewControllerProgressDisplayMode) {
+    /**
+     The progress (via UIProgressView or UIActivityIndicatorView) is displayed in the UINavigationBar of the UINavigationController containing the receiver.
+     */
     KSOWebKitViewControllerProgressDisplayModeNavigationBar,
+    /**
+     The progress is displayed via a UIProgressView aligned to the top of the receiver's view.
+     */
     KSOWebKitViewControllerProgressDisplayModeSubview
 };
 
@@ -84,6 +93,13 @@ typedef NS_OPTIONS(NSUInteger, KSOWebKitViewControllerToolbarOptions) {
  The default is nil.
  */
 @property (copy,nonatomic,nullable) NSString *doneBarButtonItemTitle;
+/**
+ Set and get the progress display mode of the receiver. This controls how loading progress of the managed WKWebView is displayed.
+ 
+ The default is KSOWebKitViewControllerProgressDisplayModeNavigationBar.
+ 
+ @see KSOWebKitViewControllerProgressDisplayMode
+ */
 @property (assign,nonatomic) KSOWebKitViewControllerProgressDisplayMode progressDisplayMode;
 /**
  Set and get the toolbar options of the receiver. This value controls whether to toolbar is shown and what items are displayed.

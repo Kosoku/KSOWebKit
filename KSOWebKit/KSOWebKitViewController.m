@@ -40,7 +40,7 @@ static CGSize const kToolbarIconSize = {.width=25.0, .height=25.0};
 @end
 
 @implementation KSOWebKitViewController
-
+#pragma mark *** Subclass Overrides ***
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if (!(self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]))
         return nil;
@@ -50,7 +50,7 @@ static CGSize const kToolbarIconSize = {.width=25.0, .height=25.0};
     
     return self;
 }
-
+#pragma mark -
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -248,7 +248,7 @@ static CGSize const kToolbarIconSize = {.width=25.0, .height=25.0};
     [self.navigationController.KDI_progressNavigationBar setProgressHidden:YES animated:NO];
     [self.navigationController.KDI_progressNavigationBar setProgress:0.0];
 }
-
+#pragma mark WKNavigationDelegate
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
     if ([self.delegate respondsToSelector:@selector(webKitViewController:decidePolicyForNavigationAction:decisionHandler:)]) {
         [self.delegate webKitViewController:self decidePolicyForNavigationAction:navigationAction decisionHandler:decisionHandler];
@@ -257,18 +257,19 @@ static CGSize const kToolbarIconSize = {.width=25.0, .height=25.0};
         decisionHandler(WKNavigationActionPolicyAllow);
     }
 }
-
+#pragma mark WKUIDelegate
 - (WKWebView *)webView:(WKWebView *)webView createWebViewWithConfiguration:(WKWebViewConfiguration *)configuration forNavigationAction:(WKNavigationAction *)navigationAction windowFeatures:(WKWindowFeatures *)windowFeatures {
     if (navigationAction.targetFrame == nil) {
         [self.webView loadRequest:navigationAction.request];
     }
     return nil;
 }
-
+#pragma mark *** Public Methods ***
+#pragma mark Properties
 - (void)setTheme:(KSOWebKitTheme *)theme {
     _theme = theme ?: KSOWebKitTheme.defaultTheme;
 }
-
+#pragma mark -
 @dynamic URLString;
 - (NSString *)URLString {
     return self.URLRequest.URL.absoluteString;
