@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		07189AF01F67690D007D6186 /* SubviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07189AEF1F67690D007D6186 /* SubviewViewController.m */; };
 		0790595F1EB7F8A800E14243 /* KSOWebKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 0790595D1EB7F8A800E14243 /* KSOWebKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0790596A1EB7FA2100E14243 /* KSOWebKitViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 079059681EB7FA2100E14243 /* KSOWebKitViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0790596B1EB7FA2100E14243 /* KSOWebKitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 079059691EB7FA2100E14243 /* KSOWebKitViewController.m */; };
@@ -71,6 +72,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		07189AEE1F67690D007D6186 /* SubviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubviewViewController.h; sourceTree = "<group>"; };
+		07189AEF1F67690D007D6186 /* SubviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubviewViewController.m; sourceTree = "<group>"; };
 		0790595A1EB7F8A800E14243 /* KSOWebKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KSOWebKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0790595D1EB7F8A800E14243 /* KSOWebKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KSOWebKit.h; sourceTree = "<group>"; };
 		0790595E1EB7F8A800E14243 /* KSOWebKit-iOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "KSOWebKit-iOS-Info.plist"; sourceTree = "<group>"; };
@@ -196,6 +199,8 @@
 				079059761EB7FB3900E14243 /* AppDelegate.m */,
 				079059781EB7FB3900E14243 /* ViewController.h */,
 				079059791EB7FB3900E14243 /* ViewController.m */,
+				07189AEE1F67690D007D6186 /* SubviewViewController.h */,
+				07189AEF1F67690D007D6186 /* SubviewViewController.m */,
 				0790597B1EB7FB3900E14243 /* Main.storyboard */,
 				0790597E1EB7FB3900E14243 /* Assets.xcassets */,
 				079059801EB7FB3900E14243 /* LaunchScreen.storyboard */,
@@ -396,6 +401,7 @@
 			files = (
 				0790597A1EB7FB3900E14243 /* ViewController.m in Sources */,
 				079059771EB7FB3900E14243 /* AppDelegate.m in Sources */,
+				07189AF01F67690D007D6186 /* SubviewViewController.m in Sources */,
 				079059741EB7FB3900E14243 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
