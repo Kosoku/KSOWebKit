@@ -166,7 +166,7 @@ static CGSize const kToolbarIconSize = {.width=25.0, .height=25.0};
     
     [self.webView KAG_addObserverForKeyPaths:@[@kstKeypath(self.webView,canGoBack),@kstKeypath(self.webView,canGoForward)] options:NSKeyValueObservingOptionInitial block:^(NSString * _Nonnull keyPath, id  _Nullable value, NSDictionary<NSKeyValueChangeKey,id> * _Nonnull change) {
         kstStrongify(self);
-        KSTDispatchMainSync(^{
+        KSTDispatchMainAsync(^{
             [self.backBarButtonItem setEnabled:self.webView.canGoBack];
             [self.forwardBarButtonItem setEnabled:self.webView.canGoForward];
         });
