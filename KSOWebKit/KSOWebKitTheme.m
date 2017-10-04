@@ -17,6 +17,8 @@
 
 #import <KSOFontAwesomeExtensions/KSOFontAwesomeExtensions.h>
 
+#import <objc/runtime.h>
+
 @interface KSOWebKitTheme ()
 @property (readwrite,copy,nonatomic) NSString *identifier;
 
@@ -65,13 +67,12 @@
     return self;
 }
 
+static void const *kDefaultThemeKey = &kDefaultThemeKey;
 + (KSOWebKitTheme *)defaultTheme {
-    static KSOWebKitTheme *kRetval;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        kRetval = [[KSOWebKitTheme alloc] initWithIdentifier:@"com.kosoku.ksowebkit.theme.default"];
-    });
-    return kRetval;
+    return objc_getAssociatedObject(self, kDefaultThemeKey) ?: [[KSOWebKitTheme alloc] initWithIdentifier:@"com.kosoku.ksowebkit.theme.default"];
+}
++ (void)setDefaultTheme:(KSOWebKitTheme *)defaultTheme {
+    objc_setAssociatedObject(self, kDefaultThemeKey, defaultTheme, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 - (void)setTitleFont:(UIFont *)titleFont {

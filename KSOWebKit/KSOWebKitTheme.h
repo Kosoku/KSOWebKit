@@ -23,9 +23,11 @@ NS_ASSUME_NONNULL_BEGIN
 @interface KSOWebKitTheme : NSObject <NSCopying>
 
 /**
- Get the default theme.
+ Set and get the default theme.
+ 
+ The default value has values equal to the default properties below.
  */
-@property (class,readonly,nonatomic) KSOWebKitTheme *defaultTheme;
+@property (class,strong,nonatomic,null_resettable) KSOWebKitTheme *defaultTheme;
 
 /**
  Get the theme identifier.
