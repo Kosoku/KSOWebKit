@@ -58,5 +58,24 @@
 - (IBAction)_pushAsSubviewAction:(id)sender {
     [self.navigationController pushViewController:[[SubviewViewController alloc] init] animated:YES];
 }
+- (IBAction)_presentWithThemeAction:(id)sender {
+    KSOWebKitTheme *theme = [KSOWebKitTheme.defaultTheme copy];
+    
+    [theme setTitleTextColor:KDIColorRandomRGB()];
+    [theme setURLTextColor:KDIColorRandomRGB()];
+    [theme setHasOnlySecureContentImageTintColor:KDIColorRandomRGB()];
+    
+    KSOWebKitViewController *viewController = [[KSOWebKitViewController alloc] init];
+    
+    [viewController setTheme:theme];
+    [viewController setURL:[NSURL URLWithString:self.textField.text]];
+    
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithNavigationBarClass:[KDIProgressNavigationBar class] toolbarClass:Nil];
+    
+    [navigationController.navigationBar setBarTintColor:KDIColorRandomRGB()];
+    [navigationController setViewControllers:@[viewController]];
+    
+    [self presentViewController:navigationController animated:YES completion:nil];
+}
 
 @end
