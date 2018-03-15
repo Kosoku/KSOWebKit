@@ -108,7 +108,7 @@ static void const *kDefaultThemeKey = &kDefaultThemeKey;
 }
 + (UIImage *)_defaultHasOnlySecureContentImage; {
     // fa-lock
-    return [UIImage KSO_fontAwesomeImageWithString:@"\uf023" size:CGSizeMake(16, 16)];
+    return [UIImage KSO_fontAwesomeSolidImageWithString:@"\uf023" size:CGSizeMake(16, 16)];
 }
 + (UIColor *)_defaultHasOnlySecureContentImageTintColor; {
     return UIColor.darkGrayColor;

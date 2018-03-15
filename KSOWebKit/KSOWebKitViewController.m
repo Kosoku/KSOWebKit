@@ -181,11 +181,11 @@ static CGSize const kToolbarIconSize = {.width=25.0, .height=25.0};
     
     [self.navigationItem setTitleView:titleView];
     
-    [self setBackBarButtonItem:[UIBarButtonItem KDI_barButtonItemWithImage:[[UIImage KSO_fontAwesomeImageWithString:@"\uf053" size:kToolbarIconSize] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] style:UIBarButtonItemStylePlain block:^(UIBarButtonItem * _Nonnull barButtonItem) {
+    [self setBackBarButtonItem:[UIBarButtonItem KDI_barButtonItemWithImage:[[UIImage KSO_fontAwesomeSolidImageWithString:@"\uf053" size:kToolbarIconSize] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] style:UIBarButtonItemStylePlain block:^(UIBarButtonItem * _Nonnull barButtonItem) {
         kstStrongify(self);
         [self.webView goBack];
     }]];
-    [self setForwardBarButtonItem:[UIBarButtonItem KDI_barButtonItemWithImage:[[UIImage KSO_fontAwesomeImageWithString:@"\uf054" size:kToolbarIconSize] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] style:UIBarButtonItemStylePlain block:^(UIBarButtonItem * _Nonnull barButtonItem) {
+    [self setForwardBarButtonItem:[UIBarButtonItem KDI_barButtonItemWithImage:[[UIImage KSO_fontAwesomeSolidImageWithString:@"\uf054" size:kToolbarIconSize] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] style:UIBarButtonItemStylePlain block:^(UIBarButtonItem * _Nonnull barButtonItem) {
         kstStrongify(self);
         [self.webView goForward];
     }]];
