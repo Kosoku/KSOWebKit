@@ -327,7 +327,7 @@
 					};
 					0790596F1EB7FB3900E14243 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = C6AZ27TEW2;
+						DevelopmentTeam = 74KPPW2K35;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -615,7 +615,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = C6AZ27TEW2;
+				DEVELOPMENT_TEAM = 74KPPW2K35;
 				INFOPLIST_FILE = "Demo-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kosoku.Demo-iOS";
@@ -627,7 +627,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = C6AZ27TEW2;
+				DEVELOPMENT_TEAM = 74KPPW2K35;
 				INFOPLIST_FILE = "Demo-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kosoku.Demo-iOS";
