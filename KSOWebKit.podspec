@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'KSOWebKit'
-  s.version          = '1.0.0'
+  s.version          = '1.0.1'
   s.summary          = 'KSOWebKit is a wrapper for various WebKit classes.'
 
 # This description is used to generate tags and improve search results.
