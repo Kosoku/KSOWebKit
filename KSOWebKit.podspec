@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'KSOWebKit'
-  s.version          = '1.0.1'
+  s.version          = '1.0.2'
   s.summary          = 'KSOWebKit is a wrapper for various WebKit classes.'
 
 # This description is used to generate tags and improve search results.
@@ -26,7 +26,8 @@ Pod::Spec.new do |s|
   s.license          = { :type => 'BSD', :file => 'license.txt' }
   s.author           = { 'William Towe' => 'willbur1984@gmail.com' }
   s.source           = { :git => 'https://github.com/Kosoku/KSOWebKit.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  
+  s.deprecated = true
 
   s.ios.deployment_target = '10.0'
   
